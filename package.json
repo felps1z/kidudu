@@ -7,7 +7,7 @@
     "dev": "npx tailwindcss -i ./styles/style.css -o ./styles/output.css --watch"
   },
   "keywords": [],
-  "author": "",
+  "author": "Felipe dos Santos",
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.4"

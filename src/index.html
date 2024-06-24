@@ -1,13 +1,143 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kidudu - Quem prova não esquece!</title>
 
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+    </style>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="../styles/output.css">
 </head>
+
 <body>
-    
+
+    <!-- MENU MOBILE -->
+    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-10 shadow-lg">
+        <div class="flex justify-center items-center my-6">
+            <button onclick="closeMenu()">
+                <i class="fa fa-xmark text-red-color" style="font-size: 32px"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col gap-6 my-6">
+            <a href="#">Nossos produtos</a>
+            <a href="#">Quem somos</a>
+            <a href="#">Localização</a>
+            <a href="#">Contato</a>
+        </nav>
+    </div>
+    <!-- FIM MENU MOBILE -->
+
+    <!-- HEADER -->
+    <header class="flex flex-row justify-between items-center bg-red-color p-4">
+        <a href="#">
+            <img src="./assets/logo.svg" alt="Logo branca da Kidudu" class="w-40 max-w-56">
+        </a>
+
+        <!-- BOTÕES -->
+        <div class="flex gap-6">
+            <a href="#" class="relative" title="Carrinho">
+                <i class="fa fa-cart-shopping text-white" style="font-size: 24px;"></i>
+                <div
+                    class="flex justify-center items-center text-white rounded-full text-sm absolute -right-2 -top-2 bg-yellow-color h-4 w-4">
+                    0</div>
+            </a>
+
+            <!-- PC BOTAO -->
+            <a href="#" class="hidden lg:flex bg-white">Peça aqui</a>
+            <!-- FIM PC BOTAO -->
+
+            <button onclick="openMenu()" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
+                    style="font-size: 24px;"></i></button>
+        </div>
+        <!-- FIM BOTÕES -->
+    </header>
+    <!-- FIM HEADER -->
+
+    <!-- MAIN -->
+    <main>
+
+        <!-- HERO -->
+        <section id="hero">
+
+            <div id="carousel" class="py-4 pb-12 bg-[#F9F9F9] flex flex-col lg:flex-row relative">
+
+                <!-- IMG HERO -->
+                <div class="w-full h-64 flex justify-center relative lg:order-2">
+                    <div class="h-full relative">
+                        <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus" class="h-full">
+
+                        <!-- CAIXA DE AVALIACAO -->
+                        <div
+                            class="flex flex-row justify-between absolute bottom-0 -right-5 bg-white shadow-lg z-10 p-2 rounded-md gap-20 scale-75">
+                            <div class="flex items-center">
+                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
+                                    alt="Avatar representando um cliente da Kidudu"
+                                    class="absolute left-2 rounded-full border-white border-2 w-10">
+
+                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
+                                    alt="Avatar representando um cliente da Kidudu"
+                                    class="absolute left-6 z-10 rounded-full border-white border-2 w-10">
+
+                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=1ef1429f8c5d924391d375dcb61c4279"
+                                    alt="Avatar representando um cliente da Kidudu"
+                                    class="absolute left-10 z-20 rounded-full border-white border-2 w-10">
+                            </div>
+
+                            <div>
+                                <p class="whitespace-nowrap text-sm font-bold">Avaliação dos clientes</p>
+
+                                <span class="text-yellow-color text-lg font-bold">4,9</span>
+                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                            </div>
+                        </div>
+                        <!-- FIM CAIXA DE AVALIACAO -->
+                    </div>
+                </div>
+                <!-- FIM IMG HERO -->
+
+                <!-- TEXTO HERO -->
+                <div class="lg:order-1 px-10">
+                    <h2 class="text-3xl font-bold my-2 max-w-80">Descubra sabores <span
+                            class="text-red-color">irresistíveis</span>
+                        feitos com os melhores ingredientes </h2>
+
+                    <p class="text-sm text-gray-text font-medium my-2 mb-6 max-w-sm">Estamos abertos <span
+                            class="font-bold">todos
+                            os dias</span>, das <span class="font-bold">10:00</span> às <span
+                            class="font-bold">16:00</span>. Faça seu pedido
+                        agora e venha se deliciar conosco!</p>
+
+                    <a href="#"
+                        class="py-3 px-11 bg-red-color rounded-md text-white hover:scale-110 hover:brightness-110 duration-200 text-sm">Peça
+                        já</a>
+                </div>
+
+                <div class="absolute bottom-2 left-left-calc-50-minus-20px flex gap-1">
+                    <div class="h-2 w-2 bg-[#212121] rounded-full"></div>
+                    <div class="h-2 w-2 bg-[#A9A9A9] rounded-full"></div>
+                </div>
+                <!-- FIM TEXTO HERO -->
+            </div>
+
+        </section>
+        <!-- FIM HERO -->
+
+    </main>
+    <!-- FIM MAIN -->
+
+    <script src="./script.js"></script>
 </body>
+
 </html>
