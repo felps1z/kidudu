@@ -19,7 +19,7 @@
 
 <body>
 
-    <!-- MENU MOBILE -->
+    <!-- NAVBAR MOBILE -->
     <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-10 shadow-lg">
         <div class="flex justify-center items-center my-6">
             <button onclick="closeMenu()">
@@ -33,16 +33,27 @@
             <a href="#">Contato</a>
         </nav>
     </div>
-    <!-- FIM MENU MOBILE -->
+    <!-- FIM NAVBAR MOBILE -->
 
     <!-- HEADER -->
-    <header class="flex flex-row justify-between items-center bg-red-color p-4">
-        <a href="#">
-            <img src="./assets/logo.svg" alt="Logo branca da Kidudu" class="w-40 max-w-56">
-        </a>
+    <header class="flex flex-row justify-between items-center bg-red-color py-4 px-5 sm:px-10">
+
+        <!-- LOGO E NAVBAR PC -->
+        <div class="flex items-center gap-12">
+            <a href="#">
+                <img src="./assets/logo.svg" alt="Logo branca da Kidudu" class="w-40 max-w-56">
+            </a>
+            <nav class="hidden lg:flex gap-10">
+                <a href="#" class="duration-200 text-white font-medium">Nossos produtos</a>
+                <a href="#" class="duration-200 text-white font-medium">Quem somos</a>
+                <a href="#" class="duration-200 text-white font-medium">Localização</a>
+                <a href="#" class="duration-200 text-white font-medium">Contato</a>
+            </nav>
+        </div>
+        <!-- FIM LOGO E NAVBAR PC -->
 
         <!-- BOTÕES -->
-        <div class="flex gap-6">
+        <div class="flex gap-6 items-center">
             <a href="#" class="relative" title="Carrinho">
                 <i class="fa fa-cart-shopping text-white" style="font-size: 24px;"></i>
                 <div
@@ -51,13 +62,14 @@
             </a>
 
             <!-- PC BOTAO -->
-            <a href="#" class="hidden lg:flex bg-white">Peça aqui</a>
+            <a href="#" class="hidden lg:flex bg-white py-3 px-12 rounded-full font-medium">Peça aqui</a>
             <!-- FIM PC BOTAO -->
 
             <button onclick="openMenu()" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
                     style="font-size: 24px;"></i></button>
         </div>
         <!-- FIM BOTÕES -->
+
     </header>
     <!-- FIM HEADER -->
 
@@ -67,68 +79,77 @@
         <!-- HERO -->
         <section id="hero">
 
-            <div id="carousel" class="py-4 pb-12 bg-[#F9F9F9] flex flex-col lg:flex-row relative">
+            <div id="carousel" class="py-4 px-5 sm:px-10 bg-[#F9F9F9]">
 
-                <!-- IMG HERO -->
-                <div class="w-full h-64 flex justify-center relative lg:order-2">
-                    <div class="h-full relative">
-                        <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus" class="h-full">
+                <!-- IMG E TEXTO -->
+                <div class="flex flex-col sm:flex-row">
+                    <!-- IMG -->
+                    <div class="w-full h-64 flex justify-center relative sm:order-2">
+                        <div class="h-full relative">
+                            <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus" class="h-full">
 
-                        <!-- CAIXA DE AVALIACAO -->
-                        <div
-                            class="flex flex-row justify-between absolute bottom-0 -right-5 bg-white shadow-lg z-10 p-2 rounded-md gap-20 scale-75">
-                            <div class="flex items-center">
-                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
-                                    alt="Avatar representando um cliente da Kidudu"
-                                    class="absolute left-2 rounded-full border-white border-2 w-10">
+                            <!-- CAIXA DE AVALIACAO -->
+                            <div
+                                class="flex flex-row justify-between absolute bottom-0 -right-5 bg-white shadow-lg z-10 p-2 rounded-md gap-20 scale-75">
+                                <div class="flex items-center">
+                                    <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
+                                        alt="Avatar representando um cliente da Kidudu"
+                                        class="absolute left-2 rounded-full border-white border-2 w-10">
 
-                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
-                                    alt="Avatar representando um cliente da Kidudu"
-                                    class="absolute left-6 z-10 rounded-full border-white border-2 w-10">
+                                    <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=7094be8d9b8779e18696f23102e378bf"
+                                        alt="Avatar representando um cliente da Kidudu"
+                                        class="absolute left-6 z-10 rounded-full border-white border-2 w-10">
 
-                                <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=1ef1429f8c5d924391d375dcb61c4279"
-                                    alt="Avatar representando um cliente da Kidudu"
-                                    class="absolute left-10 z-20 rounded-full border-white border-2 w-10">
+                                    <img src="https://doodleipsum.com/600/avatar?shape=circle&bg=ceebff&i=1ef1429f8c5d924391d375dcb61c4279"
+                                        alt="Avatar representando um cliente da Kidudu"
+                                        class="absolute left-10 z-20 rounded-full border-white border-2 w-10">
+                                </div>
+
+                                <div>
+                                    <p class="whitespace-nowrap text-sm font-bold">Avaliação dos clientes</p>
+
+                                    <span class="text-yellow-color text-lg font-bold">4,9</span>
+                                    <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                    <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                    <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                    <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                    <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
+                                </div>
                             </div>
-
-                            <div>
-                                <p class="whitespace-nowrap text-sm font-bold">Avaliação dos clientes</p>
-
-                                <span class="text-yellow-color text-lg font-bold">4,9</span>
-                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
-                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
-                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
-                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
-                                <i class="fa fa-star text-yellow-color" style="font-size: 14px;"></i>
-                            </div>
+                            <!-- FIM CAIXA DE AVALIACAO -->
                         </div>
-                        <!-- FIM CAIXA DE AVALIACAO -->
                     </div>
+                    <!-- FIM IMG -->
+
+                    <!-- TEXTO -->
+                    <div class="sm:order-1 flex flex-col items-center">
+                        <h2 class="text-3xl font-bold my-2 max-w-72">Descubra sabores <span
+                                class="text-red-color">irresistíveis</span>
+                            feitos com os melhores ingredientes </h2>
+
+                        <p class="text-sm text-gray-text font-medium my-2 mb-6 max-w-72">Estamos abertos <span
+                                class="font-bold">todos
+                                os dias</span>, das <span class="font-bold">10:00</span> às <span
+                                class="font-bold">16:00</span>. Faça seu pedido
+                            agora e venha se deliciar conosco!</p>
+
+                        <div class="w-72">
+                            <a href="#"
+                                class="py-3 px-11 bg-red-color rounded-md text-white hover:scale-110 hover:brightness-110 duration-200 text-sm">Peça
+                                já</a>
+                        </div>
+                    </div>
+                    <!-- FIM TEXTO -->
+
                 </div>
-                <!-- FIM IMG HERO -->
+                <!-- FIM IMG E TEXTO -->
 
-                <!-- TEXTO HERO -->
-                <div class="lg:order-1 px-10">
-                    <h2 class="text-3xl font-bold my-2 max-w-80">Descubra sabores <span
-                            class="text-red-color">irresistíveis</span>
-                        feitos com os melhores ingredientes </h2>
-
-                    <p class="text-sm text-gray-text font-medium my-2 mb-6 max-w-sm">Estamos abertos <span
-                            class="font-bold">todos
-                            os dias</span>, das <span class="font-bold">10:00</span> às <span
-                            class="font-bold">16:00</span>. Faça seu pedido
-                        agora e venha se deliciar conosco!</p>
-
-                    <a href="#"
-                        class="py-3 px-11 bg-red-color rounded-md text-white hover:scale-110 hover:brightness-110 duration-200 text-sm">Peça
-                        já</a>
-                </div>
-
-                <div class="absolute bottom-2 left-left-calc-50-minus-20px flex gap-1">
+                <!-- BOLINHAS DO CARROSSEL -->
+                <div class="flex justify-center items-center gap-1 mt-5">
                     <div class="h-2 w-2 bg-[#212121] rounded-full"></div>
                     <div class="h-2 w-2 bg-[#A9A9A9] rounded-full"></div>
                 </div>
-                <!-- FIM TEXTO HERO -->
+                <!-- FIM BOLINHAS DO CARROSSEL -->
             </div>
 
         </section>

@@ -17,9 +17,6 @@ module.exports = {
       },
       fontFamily: { 
         "sans": ["Inter", "sans-serif"]
-      },
-      inset: {
-        "left-calc-50-minus-20px": "calc(50% - 20px)"
       }
     },
   },
