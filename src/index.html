@@ -164,7 +164,7 @@
         <section
             class="w-full max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-40 py-4 px-5 md:px-10 my-8">
             <div class="flex flex-col items-center">
-                <img src="assets/qualities/noun-care-6933825.svg" alt="" class="w-16">
+                <img src="assets/iconsQualities/noun-care-6933825.svg" alt="" class="w-16">
 
                 <div>
                     <h3 class="text-center font-semibold mb-1">
@@ -177,9 +177,9 @@
             </div>
 
             <div class="flex flex-col items-center">
-              
-                    <img src="assets/qualities/noun-fruit-6389284.svg" alt="" class="w-16">
-                
+
+                <img src="assets/iconsQualities/noun-fruit-6389284.svg" alt="" class="w-16">
+
                 <div>
                     <h3 class="text-center font-semibold mb-1">
                         Ingredientes selecionados
@@ -190,9 +190,9 @@
                 </div>
             </div>
             <div class="flex flex-col items-center">
-             
-                    <img src="assets/qualities/noun-quick-6883105.svg" alt="" class="w-16">
-              
+
+                <img src="assets/iconsQualities/noun-quick-6883105.svg" alt="" class="w-16">
+
 
                 <div>
                     <h3 class="text-center font-semibold mb-1">
@@ -204,9 +204,9 @@
                 </div>
             </div>
             <div class="flex flex-col items-center">
-               
-                    <img src="assets/qualities/noun-customer-service-6940916.svg" alt="" class="w-16">
-            
+
+                <img src="assets/iconsQualities/noun-customer-service-6940916.svg" alt="" class="w-16">
+
 
                 <div>
                     <h3 class="text-center font-semibold mb-1">
@@ -223,7 +223,8 @@
         <!-- PRODUTOS -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8">
 
-            <div class="flex gap-5">
+            <!-- TITULO -->
+            <div class="flex justify-between mb-6">
                 <h2 class="font-semibold text-2xl">Sabores tradicionais</h2>
                 <div class="bg-green-500 flex justify-center items-center rounded-md px-3">
                     <div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1">
@@ -232,25 +233,81 @@
                     <span id="msg" class="text-white">Aberto <span class="hidden md:inline ">no momento</span></span>
                 </div>
             </div>
+            <!-- FIM TITULO -->
 
-            <div>
-                <div>
-                    <div>
-                        <img src="" alt="">
+            <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-6">
+
+                <!-- PRODUTO -->
+                <div class="border border-gray-border hover:border-red-color rounded-md flex max-h-40 overflow-hidden cursor-pointer">
+                    <div class="flex-1">
+                        <img src="assets/imgProducts/sensacao.jpg" alt="Imagem do kidudu de Sensação" class="object-cover">
                     </div>
-                    <div>
+                    <div class="flex-1 flex flex-col justify-between p-6">
                         <div>
-                            <h3>Sensação</h3>
-                            <div></div>
+                            <h3 class="font-semibold">Sensação</h3>
+                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
                         </div>
-                        <div>
-                            <span>R$ 2,50</span>
-                            <i class="fa fa-cart-plus text-red-color" style="font-size: 20px"></i>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">R$ 2,50</span>
+                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90" style="font-size: 20px"></i></button>
                         </div>
                     </div>
                 </div>
-            </div>
+                <!-- FIM PRODUTO -->
+                <div class="border border-gray-border hover:border-red-color duration-300 rounded-md flex max-h-40 overflow-hidden cursor-pointer">
+                    <div class="flex-1">
+                        <img src="assets/imgProducts/mousse-maracuja.jpg" alt="Imagem do kidudu de Mousse de maracujá" class="object-cover">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between p-6">
+                        <div>
+                            <h3 class="font-semibold">Mousse de maracujá</h3>
+                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">R$ 2,50</span>
+                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75" style="font-size: 20px"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM PRODUTO -->
+                <!-- FIM PRODUTO -->
+                <div class="border border-gray-border hover:border-red-color duration-300 rounded-md flex max-h-40 overflow-hidden cursor-pointer">
+                    <div class="flex-1">
+                        <img src="assets/imgProducts/mousse-limao.jpg" alt="Imagem do kidudu de Mousse de limão" class="object-cover">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between p-6">
+                        <div>
+                            <h3 class="font-semibold">Mousse de limão</h3>
+                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">R$ 2,50</span>
+                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75" style="font-size: 20px"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM PRODUTO -->
+                <!-- FIM PRODUTO -->
+                <div class="border border-gray-border hover:border-red-color duration-300 rounded-md flex max-h-40 overflow-hidden cursor-pointer">
+                    <div class="flex-1">
+                        <img src="assets/imgProducts/chocolate.jpg" alt="Imagem do kidudu de Chocolate" class="object-cover">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between p-6">
+                        <div>
+                            <h3 class="font-semibold">Chocolate</h3>
+                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold">R$ 2,50</span>
+                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75" style="font-size: 20px"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM PRODUTO -->
 
+            
+            </div>
+            
         </section>
         <!-- FIM PRODUTOS -->
 
