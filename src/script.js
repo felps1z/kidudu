@@ -9,3 +9,11 @@ function closeMenu() {
     menuMobile.classList.remove('block');
     menuMobile.classList.add('hidden');
 }
+
+
+function showItems(){
+    const elementItems = document.querySelector('#items');
+    let items = 0;
+    elementItems.innerHTML = items;
+}
+showItems();
