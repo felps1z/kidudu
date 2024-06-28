@@ -1068,6 +1068,18 @@ video {
   width: 3rem;
 }
 
+.group:hover .group-hover\:w-1 {
+  width: 0.25rem;
+}
+
+.group:hover .group-hover\:w-6 {
+  width: 1.5rem;
+}
+
+.group:hover .group-hover\:w-8 {
+  width: 2rem;
+}
+
 @media (min-width: 640px) {
   .sm\:right-0 {
     right: 0px;
