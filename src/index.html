@@ -36,9 +36,9 @@
     <!-- FIM NAVBAR MOBILE -->
 
     <!-- HEADER -->
-    <header class="w-full bg-red-color py-4 px-5 md:px-10">
+    <header class="w-full bg-red-color">
 
-        <div class="max-w-screen-xl flex flex-row justify-between items-center mx-auto">
+        <div class="max-w-screen-xl p-5 md:px-10 mx-auto flex flex-row justify-between items-center">
             <!-- LOGO E NAVBAR PC -->
             <div class="flex items-center gap-12">
                 <a href="#">
@@ -81,14 +81,17 @@
         <!-- HERO -->
         <section id="hero">
 
-            <div id="carousel" class="py-4 px-5 md:px-10 bg-[#F9F9F9]">
+            <div id="carousel" class="w-full bg-[#F9F9F9]">
 
                 <!-- IMG E TEXTO -->
-                <div class="flex flex-col items-center justify-center sm:flex-row max-w-screen-xl mx-auto py-5">
+                <div class="flex flex-col items-center justify-center sm:flex-row p-5 md:px-10 max-w-screen-xl mx-auto">
                     <!-- IMG -->
                     <div class="flex-1 flex justify-center sm:justify-end items-center sm:order-2">
                         <div class="relative lg:w-8/12 w-11/12">
-                            <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus">
+                            <div>
+                                <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus">
+
+                            </div>
 
                             <!-- CAIXA DE AVALIACAO -->
                             <div
@@ -162,7 +165,7 @@
 
         <!-- QUALIDADES -->
         <section
-            class="w-full max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-40 py-4 px-5 md:px-10 my-8">
+            class="w-full max-w-screen-xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-40 p-5 md:px-10 my-8">
             <div class="flex flex-col items-center">
                 <img src="assets/iconsQualities/noun-care-6933825.svg" alt="" class="w-16">
 
@@ -193,7 +196,6 @@
 
                 <img src="assets/iconsQualities/noun-quick-6883105.svg" alt="" class="w-16">
 
-
                 <div>
                     <h3 class="text-center font-semibold mb-1">
                         Entrega rápida
@@ -207,7 +209,6 @@
 
                 <img src="assets/iconsQualities/noun-customer-service-6940916.svg" alt="" class="w-16">
 
-
                 <div>
                     <h3 class="text-center font-semibold mb-1">
                         Ótimo atendimento
@@ -219,6 +220,7 @@
             </div>
         </section>
         <!-- FIM QUALIDADES -->
+        
 
         <!-- PRODUTOS -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8">
@@ -238,14 +240,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-6">
 
                 <!-- PRODUTO -->
-                <div class="border border-gray-border hover:border-red-color rounded-md flex max-h-40 overflow-hidden cursor-pointer">
+                <div class="border border-gray-border hover:border-red-color rounded-md flex max-h-40 overflow-hidden cursor-pointer group">
                     <div class="flex-1">
                         <img src="assets/imgProducts/sensacao.jpg" alt="Imagem do kidudu de Sensação" class="object-cover">
                     </div>
                     <div class="flex-1 flex flex-col justify-between p-6">
                         <div>
                             <h3 class="font-semibold">Sensação</h3>
-                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
+                            <div class="h-1 rounded-full w-8 bg-red-color group-hover:w-12 duration-300"></div>
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
