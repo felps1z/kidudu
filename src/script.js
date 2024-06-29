@@ -36,14 +36,8 @@ ScrollReveal().reveal('#quemsomos', {
     distance: '20%'
 });
 
-ScrollReveal().reveal('#loc', {
-    origin: 'left',
-    duration: 1500,
-    distance: '20%'
-});
-
 ScrollReveal().reveal('#loc-title', {
     origin: 'left',
-    duration: 2000,
+    duration: 1500,
     distance: '20%'
 });
