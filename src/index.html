@@ -18,13 +18,15 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <link rel="stylesheet" href="../styles/output.css">
 </head>
 
-<body>
+<body id="inicio">
 
     <!-- NAVBAR MOBILE -->
-    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-10 shadow-lg">
+    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-50 shadow-lg">
         <div class="flex justify-center items-center my-6">
             <button onclick="closeMenu()">
                 <i class="fa fa-xmark text-red-color" style="font-size: 32px"></i>
@@ -40,7 +42,7 @@
     <!-- FIM NAVBAR MOBILE -->
 
     <!-- HEADER -->
-    <header class="w-full bg-red-color">
+    <header class="w-full bg-red-color sticky top-0 z-40">
 
         <div class="max-w-screen-xl p-5 md:px-10 mx-auto flex flex-row justify-between items-center">
             <!-- LOGO E NAVBAR PC -->
@@ -49,6 +51,7 @@
                     <img src="./assets/logo.svg" alt="Logo branca da Kidudu" class="w-40 max-w-56">
                 </a>
                 <nav class="hidden lg:flex gap-10">
+                    <a href="#inicio" class="text-white active">Início</a>
                     <a href="#produtos" class="text-white">Nossos produtos</a>
                     <a href="#quemsomos" class="text-white">Quem somos</a>
                     <a href="#loc" class="text-white">Localização</a>
@@ -66,7 +69,9 @@
                 </a>
 
                 <!-- PC BOTAO -->
-                <a href="#" class="hidden lg:flex bg-white py-3 px-12 rounded-full font-medium">Peça aqui</a>
+                <a href="#"
+                    class="hidden lg:flex bg-white py-3 px-12 rounded-full font-medium border-2 border-white hover:bg-transparent hover:text-white duration-200">Peça
+                    aqui</a>
                 <!-- FIM PC BOTAO -->
 
                 <button onclick="openMenu()" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
@@ -256,7 +261,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -276,7 +282,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -297,7 +304,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -318,7 +326,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -339,7 +348,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -360,7 +370,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -381,7 +392,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -410,7 +422,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -430,7 +443,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -451,7 +465,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -466,9 +481,10 @@
 
         <!-- QUEM SOMOS -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8 gap-8" id="quemsomos">
-
-            <h2 class="text-center text-red-color uppercase font-semibold">Quem somos</h2>
-            <h3 class="text-center text-4xl lg:text-5xl font-bold">Nosso principal objetivo</h3>
+            <div class="reveal-quem-somos">
+                <h2 class="text-center text-red-color uppercase font-semibold">Quem somos</h2>
+                <h3 class="text-center text-4xl lg:text-5xl font-bold">Nosso principal objetivo</h3>
+            </div>
 
 
             <div class="lg:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:gap-0 gap-10">
@@ -499,10 +515,11 @@
             </div>
         </section>
         <!-- FIM QUEM SOMOS -->
+
         <!-- LOCALIZAÇÃO -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8 gap-8" id="loc">
-            <h2 class="ml-5 text-red-color uppercase font-semibold">Localização</h2>
-            <h3 class="ml-10 mb-10 text-4xl lg:text-5xl font-bold">Saiba onde estamos <span
+            <h2 class="text-red-color uppercase font-semibold">Localização</h2>
+            <h3 class="ml-4 mb-10 text-4xl lg:text-5xl font-bold" id="loc-title">Saiba onde estamos <span
                     class="block">localizados</span>
             </h3>
             <div>
