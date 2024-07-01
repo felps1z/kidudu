@@ -18,37 +18,43 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="shortcut icon" href="./assets/carinha-feliz.ico" type="image/x-icon">
+
+    <script src="https://unpkg.com/scrollreveal"></script>
+
     <link rel="stylesheet" href="../styles/output.css">
 </head>
 
-<body>
+<body id="inicio">
 
     <!-- NAVBAR MOBILE -->
-    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-10 shadow-lg">
+    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-50 shadow-lg">
         <div class="flex justify-center items-center my-6">
             <button onclick="closeMenu()">
                 <i class="fa fa-xmark text-red-color" style="font-size: 32px"></i>
             </button>
         </div>
         <nav class="flex flex-col gap-6 my-6">
-            <a href="#produtos">Nossos produtos</a>
-            <a href="#quemsomos">Quem somos</a>
-            <a href="#loc">Localização</a>
-            <a href="#contato">Contato</a>
+            <a href="#inicio" onclick="closeMenu()">Início</a>
+            <a href="#produtos" onclick="closeMenu()">Nossos produtos</a>
+            <a href="#quemsomos" onclick="closeMenu()">Quem somos</a>
+            <a href="#loc" onclick="closeMenu()">Localização</a>
+            <a href="#contato" onclick="closeMenu()">Contato</a>
         </nav>
     </div>
     <!-- FIM NAVBAR MOBILE -->
 
     <!-- HEADER -->
-    <header class="w-full bg-red-color">
+    <header class="w-full bg-red-color sticky top-0 z-40">
 
         <div class="max-w-screen-xl p-5 md:px-10 mx-auto flex flex-row justify-between items-center">
             <!-- LOGO E NAVBAR PC -->
             <div class="flex items-center gap-12">
                 <a href="#">
-                    <img src="./assets/logo.svg" alt="Logo branca da Kidudu" class="w-40 max-w-56">
+                    <img src="./assets/logo.png" alt="Logo branca da Kidudu" class="w-40 max-w-56">
                 </a>
                 <nav class="hidden lg:flex gap-10">
+                    <a href="#inicio" class="text-white">Início</a>
                     <a href="#produtos" class="text-white">Nossos produtos</a>
                     <a href="#quemsomos" class="text-white">Quem somos</a>
                     <a href="#loc" class="text-white">Localização</a>
@@ -66,7 +72,8 @@
                 </a>
 
                 <!-- PC BOTAO -->
-                <a href="#" class="hidden lg:flex bg-white py-3 px-12 rounded-full font-medium">Peça aqui</a>
+                <a href="#" class="hidden lg:flex bg-white py-3 px-12 rounded-full font-medium hover:scale-105">Peça
+                    aqui</a>
                 <!-- FIM PC BOTAO -->
 
                 <button onclick="openMenu()" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
@@ -92,7 +99,7 @@
                     <div class="flex-1 flex justify-center sm:justify-end items-center sm:order-2">
                         <div class="relative lg:w-8/12 w-11/12">
                             <div>
-                                <img src="./assets/img-hero2.png" alt="Imagem ilustrando kidudus">
+                                <img src="./assets/img-hero.png" alt="Imagem ilustrando kidudus">
 
                             </div>
 
@@ -256,7 +263,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -276,7 +284,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -297,7 +306,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -318,7 +328,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -339,7 +350,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -360,7 +372,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -381,7 +394,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-75"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -410,7 +424,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -430,7 +445,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -451,7 +467,8 @@
                         </div>
                         <div class="flex justify-between items-center">
                             <span class="text-xl font-bold">R$ 2,50</span>
-                            <button><i class="fa fa-cart-plus text-red-color hover:brightness-90"
+                            <button title="Adicionar ao carrinho"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-90"
                                     style="font-size: 20px"></i></button>
                         </div>
                     </div>
@@ -466,9 +483,10 @@
 
         <!-- QUEM SOMOS -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8 gap-8" id="quemsomos">
-
-            <h2 class="text-center text-red-color uppercase font-semibold">Quem somos</h2>
-            <h3 class="text-center text-4xl lg:text-5xl font-bold">Nosso principal objetivo</h3>
+            <div class="reveal-quem-somos">
+                <h2 class="text-center text-red-color uppercase font-semibold">Quem somos</h2>
+                <h3 class="text-center text-4xl lg:text-5xl font-bold">Nosso principal objetivo</h3>
+            </div>
 
 
             <div class="lg:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:gap-0 gap-10">
@@ -499,12 +517,15 @@
             </div>
         </section>
         <!-- FIM QUEM SOMOS -->
+
         <!-- LOCALIZAÇÃO -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8 gap-8" id="loc">
-            <h2 class="ml-5 text-red-color uppercase font-semibold">Localização</h2>
-            <h3 class="ml-5 mb-10 text-4xl lg:text-5xl font-bold">Saiba onde estamos <span
-                    class="block">localizados</span>
-            </h3>
+            <div id="loc-title">
+                <h2 class="text-red-color uppercase font-semibold">Localização</h2>
+                <h3 class="ml-4 mb-10 text-4xl lg:text-5xl font-bold">Saiba onde estamos <span
+                        class="block">localizados</span>
+                </h3>
+            </div>
             <div>
                 <iframe
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3947.6692713612356!2d-36.41974102555786!3d-8.335622383943006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x7a9c638f92eae67%3A0x13ae5457d469241e!2sR.%20Di%C3%A1rio%20de%20Pernambuco%2C%2060%20-%20Tancredo%20Neves%2C%20Belo%20Jardim%20-%20PE%2C%2055150-615!5e0!3m2!1sen!2sbr!4v1719610688848!5m2!1sen!2sbr"
