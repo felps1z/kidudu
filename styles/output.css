@@ -618,8 +618,164 @@ video {
   right: 0px;
 }
 
+.right-32 {
+  right: 8rem;
+}
+
 .top-0 {
   top: 0px;
+}
+
+.top-16 {
+  top: 4rem;
+}
+
+.right-2 {
+  right: 0.5rem;
+}
+
+.right-36 {
+  right: 9rem;
+}
+
+.right-72 {
+  right: 18rem;
+}
+
+.right-\[\] {
+  right: ;
+}
+
+.right-\[5rem\] {
+  right: 5rem;
+}
+
+.right-\[25rem\] {
+  right: 25rem;
+}
+
+.right-\[10rem\] {
+  right: 10rem;
+}
+
+.right-\[8rem\] {
+  right: 8rem;
+}
+
+.right-\[8\.2rem\] {
+  right: 8.2rem;
+}
+
+.bottom-2 {
+  bottom: 0.5rem;
+}
+
+.bottom-4 {
+  bottom: 1rem;
+}
+
+.bottom-6 {
+  bottom: 1.5rem;
+}
+
+.right-\[8\.2\] {
+  right: 8.2;
+}
+
+.top-36 {
+  top: 9rem;
+}
+
+.bottom-36 {
+  bottom: 9rem;
+}
+
+.top-40 {
+  top: 10rem;
+}
+
+.top-44 {
+  top: 11rem;
+}
+
+.top-\[2\] {
+  top: 2;
+}
+
+.top-\[25rem\] {
+  top: 25rem;
+}
+
+.bottom-\[25rem\] {
+  bottom: 25rem;
+}
+
+.bottom-\[rem\] {
+  bottom: rem;
+}
+
+.bottom-\[5rem\] {
+  bottom: 5rem;
+}
+
+.bottom-\[15rem\] {
+  bottom: 15rem;
+}
+
+.bottom-\[12rem\] {
+  bottom: 12rem;
+}
+
+.bottom-\[10rem\] {
+  bottom: 10rem;
+}
+
+.bottom-\[2rem\] {
+  bottom: 2rem;
+}
+
+.top-\[2rem\] {
+  top: 2rem;
+}
+
+.top-\[12rem\] {
+  top: 12rem;
+}
+
+.top-\[14rem\] {
+  top: 14rem;
+}
+
+.top-\[11\.5rem\] {
+  top: 11.5rem;
+}
+
+.right-\[5\] {
+  right: 5;
+}
+
+.top-\[11\.8rem\] {
+  top: 11.8rem;
+}
+
+.right-\[20\] {
+  right: 20;
+}
+
+.right-\[20rem\] {
+  right: 20rem;
+}
+
+.right-\[9rem\] {
+  right: 9rem;
+}
+
+.right-\[8\.5rem\] {
+  right: 8.5rem;
+}
+
+.top-\[12\.3rem\] {
+  top: 12.3rem;
 }
 
 .z-10 {
@@ -684,13 +840,6 @@ video {
 
 .mt-10 {
   margin-top: 2.5rem;
-}
-
-.mt-4 {
-  margin-top: 1rem;
-}
-
-.block {
   display: block;
 }
 
@@ -949,9 +1098,19 @@ video {
   padding-right: 0.75rem;
 }
 
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .px-5 {
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+}
+
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .py-3 {
@@ -972,9 +1131,18 @@ video {
   text-align: center;
 }
 
+.font-sans {
+  font-family: Inter, sans-serif;
+}
+
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
 }
 
 .text-4xl {
@@ -1104,6 +1272,10 @@ video {
 
   .sm\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sm\:grid-rows-2 {
+    grid-template-rows: repeat(2, minmax(0, 1fr));
   }
 
   .sm\:flex-row {
