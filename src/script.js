@@ -42,9 +42,7 @@ ScrollReveal().reveal('#loc-title', {
     distance: '20%'
 });
 
-//Footer
-
-//Accordion de Menu
+//Accordion de Menu - Mobile
 const am = document.querySelector('#accordion-menu');
 const minusMenu = document.querySelector('#minus-menu');
 const plusMenu = document.querySelector('#plus-menu');
@@ -55,7 +53,7 @@ function openMenuAccordion() {
     plusMenu.classList.toggle('hidden');
 }
 
-//Accordion de Contato
+//Accordion de Contato - Mobile
 const ac = document.querySelector('#accordion-contact');
 const minusContact = document.querySelector('#minus-contact');
 const plusContact = document.querySelector('#plus-contact');
