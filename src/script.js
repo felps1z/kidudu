@@ -41,3 +41,10 @@ ScrollReveal().reveal('#loc-title', {
     duration: 2000,
     distance: '20%'
 });
+
+//Footer
+const acMenu = document.querySelector('#accordion-menu');
+
+function openAccordion() {
+    acMenu.classList.toggle('hidden');
+}
