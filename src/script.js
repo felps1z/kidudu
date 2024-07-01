@@ -1,3 +1,4 @@
+//Menu Navbar - Mobile
 const menuMobile = document.querySelector('#menu-mobile');
 
 function openMenu() {
@@ -10,6 +11,7 @@ function closeMenu() {
     menuMobile.classList.add('hidden');
 }
 
+//Adicionando itens ao carrinho
 function showItems() {
     const elementItems = document.querySelector('#items');
     let items = 0;
@@ -30,6 +32,7 @@ window.addEventListener('scroll', function () {
     }
 });
 
+//ScrollReveal
 ScrollReveal().reveal('#quemsomos', {
     origin: 'bottom',
     duration: 2000,

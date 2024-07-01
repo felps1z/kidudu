@@ -4,8 +4,8 @@
 
 @layer base {
     * {
-        @apply tracking-tighter, font-medium;
-        
+        @apply tracking-tighter;
+        @apply font-medium;
     }
 }
 
