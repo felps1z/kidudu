@@ -32,12 +32,12 @@ window.addEventListener('scroll', function () {
 
 ScrollReveal().reveal('#quemsomos', {
     origin: 'bottom',
-    duration: 1500,
+    duration: 2000,
     distance: '20%'
 });
 
 ScrollReveal().reveal('#loc-title', {
     origin: 'left',
-    duration: 1500,
+    duration: 2000,
     distance: '20%'
 });
