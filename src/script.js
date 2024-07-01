@@ -43,8 +43,25 @@ ScrollReveal().reveal('#loc-title', {
 });
 
 //Footer
-const acMenu = document.querySelector('#accordion-menu');
 
-function openAccordion() {
-    acMenu.classList.toggle('hidden');
+//Accordion de Menu
+const am = document.querySelector('#accordion-menu');
+const minusMenu = document.querySelector('#minus-menu');
+const plusMenu = document.querySelector('#plus-menu');
+
+function openMenuAccordion() {
+    am.classList.toggle('hidden');
+    minusMenu.classList.toggle('hidden');
+    plusMenu.classList.toggle('hidden');
+}
+
+//Accordion de Contato
+const ac = document.querySelector('#accordion-contact');
+const minusContact = document.querySelector('#minus-contact');
+const plusContact = document.querySelector('#plus-contact');
+
+function openContactAccordion() {
+    ac.classList.toggle('hidden');
+    minusContact.classList.toggle('hidden');
+    plusContact.classList.toggle('hidden');
 }
