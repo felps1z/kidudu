@@ -17,6 +17,17 @@ module.exports = {
       },
       fontFamily: { 
         "sans": ["Inter", "sans-serif"]
+      },
+      animation: {
+        'sh0': 'sh0 0.5s ease-in-out both',
+      },
+      keyframes: {
+        sh0: {
+          '0%, 100%' : { transform: 'rotate(0deg) translate3d(0, 0, 0)' },
+          '25%': { transform: 'rotate(7deg) translate3d(0, 0, 0)' },
+          '50%': { transform: 'rotate(-7deg) translate3d(0, 0, 0)' },
+          '75%': { transform: 'rotate(1deg) translate3d(0, 0, 0)' }
+        }
       }
     },
   },
