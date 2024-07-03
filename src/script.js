@@ -73,7 +73,6 @@ function openContactAccordion() {
     plusContact.classList.toggle('hidden');
 }
 
-
 //Data e Hora
 
 //Verificar se a hora atual está entre 10h e 18h
