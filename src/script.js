@@ -45,6 +45,12 @@ ScrollReveal().reveal('#loc-title', {
     distance: '20%'
 });
 
+ScrollReveal().reveal('#img-contato', {
+    origin: 'bottom',
+    duration: 2000,
+    distance: '20%'
+});
+
 //Accordion de Menu - Mobile
 const am = document.querySelector('#accordion-menu');
 const minusMenu = document.querySelector('#minus-menu');
@@ -65,4 +71,16 @@ function openContactAccordion() {
     ac.classList.toggle('hidden');
     minusContact.classList.toggle('hidden');
     plusContact.classList.toggle('hidden');
+}
+
+//Verificar se a hora atual está entre 10h e 18h
+const date = new Date();
+const hour = date.getHours();
+
+if (hour >= 10 && hour <= 18) {
+    document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Entrega disponível';
+    document.querySelector('#open').classList.add('bg-green-500');
+} else {
+    document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Entrega Indisponível';
+    document.querySelector('#open').classList.add('bg-red-500');
 }
