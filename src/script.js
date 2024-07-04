@@ -89,3 +89,46 @@ if (hour >= 10 && hour <= 18 && day === 0) {
     document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Entrega Indisponível';
     document.querySelector('#open').classList.add('bg-red-500');
 }
+
+//Carrossel
+
+const slides = document.querySelector('#slides')
+
+setInterval(() => {
+    slides.style.transition = 'transform 1s ease-in-out';
+    slides.style.transform = 'translateX(-100%)';
+}, 10000);
+setInterval(() => {
+    slides.style.transform = 'translateX(0)';
+}, 20000);
+
+//Botões do carrossel
+
+const btn2 = document.querySelector('#btn2');
+const btn1 = document.querySelector('#btn1');
+
+setInterval(() => {
+    btn2.style.backgroundColor = '#000';
+    btn1.style.backgroundColor = '#A5A5A5';
+}, 10000);
+
+setInterval(() => {
+    btn1.style.backgroundColor = '#000';
+    btn2.style.backgroundColor = '#A5A5A5';
+}, 20000);
+
+//Se o usuário clicar no botão 1, o slide volta para o primeiro
+btn1.addEventListener('click', () => {
+    slides.style.transition = 'transform 1s ease-in-out';
+    slides.style.transform = 'translateX(0)';
+    btn1.style.backgroundColor = '#000';
+    btn2.style.backgroundColor = '#A5A5A5';
+});
+
+//Se o usuário clicar no botão 2, o slide vai para o segundo
+btn2.addEventListener('click', () => {
+    slides.style.transition = 'transform 1s ease-in-out';
+    slides.style.transform = 'translateX(-100%)';
+    btn2.style.backgroundColor = '#000';
+    btn1.style.backgroundColor = '#A5A5A5';
+});
