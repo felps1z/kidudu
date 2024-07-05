@@ -129,3 +129,46 @@ btn2.addEventListener('click', () => {
     btn2.style.backgroundColor = '#000';
     btn1.style.backgroundColor = '#A5A5A5';
 });
+
+//Modal
+
+//guardando numa constante todos os produtos
+const products = document.querySelectorAll('.produto');
+
+//se o usuário clicar em um produto, o modal é aberto e a imagem, a descrição e o preço são exibidos
+products.forEach(product => {
+    product.addEventListener('click', () => {
+        const modal = document.querySelector('#modal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+
+        console.log(product)
+        const img = product.querySelector('img').src;
+        const price = product.querySelector('#price').textContent;
+        const productId = product.getAttribute('data-product-id');
+        let description = '';
+
+        switch (productId) {
+            case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso sacolé Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
+            case '2': description = 'Experimente o nosso sacolé de Paçoca, que traz todo o gostinho da tradicional paçoca em uma versão gelada e cremosa. Ideal para quem ama o sabor do amendoim.'; break;
+            case '3': description = 'Para os chocólatras de plantão, o sacolé de Chocolate é uma escolha certeira. Feito com chocolate de alta qualidade, ele é cremoso, saboroso e vai conquistar seu paladar.'; break;
+            case '4': description = 'Refresque-se com o sabor leve e frutado do sacolé de Maçã Verde. Perfeito para os dias quentes, é uma opção deliciosa e refrescante.'; break;
+            case '5': description = 'O sacolé Baba Azul é a escolha perfeita para quem adora um toque de nostalgia. Com um sabor doce e refrescante, ele vai trazer boas lembranças da infância.'; break;
+            case '6': description = 'Para os amantes de sabores tropicais, o sacolé de Mousse de Maracujá é irresistível. Cremoso e com o toque azedinho do maracujá, é uma verdadeira delícia.'; break;
+            case '7': description = 'Se você prefere algo mais cítrico, o sacolé de Mousse de Limão é a escolha ideal. Com a combinação perfeita de doce e azedo, ele é refrescante e saboroso.'; break;
+            case '8': description = 'Nosso sacolé Delícia de Abacaxi é uma explosão de sabor tropical. Feito com pedaços de abacaxi e uma cremosidade irresistível, é perfeito para quem busca um sabor premium e refrescante.'; break;
+            case '9': description = 'Se você é fã de sobremesas clássicas, vai adorar o sacolé de Pudim. Com um sabor suave e aveludado, ele é uma verdadeira delícia em forma de sacolé.'; break;
+            case '10': description = 'A combinação perfeita de queijo com goiabada agora em versão sacolé. O sabor Romeu e Julieta é uma opção sofisticada e deliciosa para quem busca algo diferente e saboroso.'; break;
+        }
+
+        document.querySelector('#modal-img').src = img;
+        document.querySelector('#modal-description').innerHTML = description;
+        document.querySelector('#modal-price').textContent = price;
+    });
+});
+
+function closeModal() {
+    const modal = document.querySelector('#modal');
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+}

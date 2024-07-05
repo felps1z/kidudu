@@ -1300,6 +1300,10 @@ video {
     height: 20rem;
   }
 
+  .md\:flex-1 {
+    flex: 1 1 0%;
+  }
+
   .md\:scale-90 {
     --tw-scale-x: .9;
     --tw-scale-y: .9;
