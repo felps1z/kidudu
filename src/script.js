@@ -132,17 +132,16 @@ btn2.addEventListener('click', () => {
 
 //Modal
 
-//selecionando todos os produtos
+// Selecionando todos os produtos
 const products = document.querySelectorAll('.produto');
 
-//adicionando um evento de clique a cada produto
+// Adicionando um evento de clique a cada produto
 products.forEach(product => {
     product.addEventListener('click', () => {
         const modal = document.querySelector('#modal');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
 
-        console.log(product)
         const img = product.querySelector('img').src;
         const alt = product.querySelector('img').alt;
         const title = product.querySelector('h3').textContent;
@@ -150,7 +149,7 @@ products.forEach(product => {
         const productId = product.getAttribute('data-product-id');
         let description = '';
 
-        //verificando qual é o produto clicado e exibindo a descrição correspondente
+        // Verificando qual é o produto clicado e exibindo a descrição correspondente
         switch (productId) {
             case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso kidudu Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
             case '2': description = 'Experimente o nosso kidudu de Paçoca, que traz todo o gostinho da tradicional paçoca em uma versão gelada e cremosa. Ideal para quem ama o sabor do amendoim.'; break;
@@ -164,67 +163,55 @@ products.forEach(product => {
             case '10': description = 'A combinação perfeita de queijo com goiabada agora em versão kidudu. O sabor Romeu e Julieta é uma opção sofisticada e deliciosa para quem busca algo diferente e saboroso.'; break;
         }
 
-        //exibindo a imagem, a descrição e o preço no modal
+        // Exibindo a imagem, a descrição e o preço no modal
         document.querySelector('#modal-img').src = img;
         document.querySelector('#modal-img').alt = alt;
         document.querySelector('#modal-title').textContent = title;
         document.querySelector('#modal-description').textContent = description;
         document.querySelector('#modal-price').textContent = price;
+
+        const modalBtn1 = document.querySelector('#modal-btn1');
+        const modalBtn2 = document.querySelector('#modal-btn2');
+        const modalQuantity = document.querySelector('#modal-quantity');
+        let quantity = 1; // Definindo a quantidade inicial
+
+        // Função para atualizar quantidade e preço no modal
+        function updatePrice() {
+            const priceElement = parseFloat(price.replace('R$ ', '').replace(',', '.'));
+            const totalPrice = priceElement * quantity;
+            document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+        }
+
+        // Adicionando um evento de clique ao botão de remover
+        modalBtn1.addEventListener('click', () => {
+            if (quantity > 1) {
+                quantity--;
+                modalQuantity.textContent = quantity;
+                updatePrice(); // Atualiza o preço ao remover um item
+            }
+        });
+
+        // Adicionando um evento de clique ao botão de adicionar
+        modalBtn2.addEventListener('click', () => {
+            if (quantity < 99) {
+                quantity++;
+                modalQuantity.textContent = quantity;
+                updatePrice(); // Atualiza o preço ao adicionar um item
+            }
+        });
+
+        // Fechar o modal se clicar fora dele
+        modal.addEventListener('click', (event) => {
+            if (event.target === modal) {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.classList.remove('flex');
+            modal.classList.add('hidden');
+            quantity = 1; // Resetando a quantidade ao fechar o modal
+            modalQuantity.textContent = quantity;
+        }
     });
 });
-
-//fechar o modal se clicar fora dele
-const modal = document.querySelector('#modal');
-
-modal.addEventListener('click', (event) => {
-    if (event.target === modal) {
-        closeModal();
-    }
-});
-
-//Funções para adicionar e remover itens do carrinho
-
-modalBtn1 = document.querySelector('#modal-btn1');
-modalBtn2 = document.querySelector('#modal-btn2');
-modalQuantity = document.querySelector('#modal-quantity');
-
-//adicionando um evento de clique ao botão de remover
-modalBtn1.addEventListener('click', () => {
-    let quantity = parseInt(modalQuantity.textContent);
-    if (quantity > 1) {
-        quantity--;
-        modalQuantity.textContent = quantity;
-        decreasesPrice();
-    }
-
-});
-
-//adicionando um evento de clique ao botão de adicionar
-modalBtn2.addEventListener('click', () => {
-    let quantity = parseInt(modalQuantity.textContent);
-    if (quantity === 99) return;
-    quantity++;
-    modalQuantity.textContent = quantity;
-    sumPrice();
-});
-
-function sumPrice() {
-    const price = document.querySelector('.price').textContent;
-    const quantity = parseInt(modalQuantity.textContent);
-    const totalPrice = parseFloat(price.replace('R$ ', '').replace(',','.')) * quantity;
-    document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-}
-
-function decreasesPrice() {
-    const price = document.querySelector('.price').textContent;
-    const quantity = parseInt(modalQuantity.textContent);
-    const totalPrice = parseFloat(price.replace('R$ ', '').replace(',','.')) * quantity;
-    document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
-}
-
-function closeModal() {
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
-    quantity = 1;
-    modalQuantity.textContent = quantity;
-}
