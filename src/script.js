@@ -132,10 +132,10 @@ btn2.addEventListener('click', () => {
 
 //Modal
 
-//guardando numa constante todos os produtos
+//selecionando todos os produtos
 const products = document.querySelectorAll('.produto');
 
-//se o usuário clicar em um produto, o modal é aberto e a imagem, a descrição e o preço são exibidos
+//adicionando um evento de clique a cada produto
 products.forEach(product => {
     product.addEventListener('click', () => {
         const modal = document.querySelector('#modal');
@@ -144,31 +144,87 @@ products.forEach(product => {
 
         console.log(product)
         const img = product.querySelector('img').src;
-        const price = product.querySelector('#price').textContent;
+        const alt = product.querySelector('img').alt;
+        const title = product.querySelector('h3').textContent;
+        const price = product.querySelector('.price').textContent;
         const productId = product.getAttribute('data-product-id');
         let description = '';
 
+        //verificando qual é o produto clicado e exibindo a descrição correspondente
         switch (productId) {
-            case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso sacolé Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
-            case '2': description = 'Experimente o nosso sacolé de Paçoca, que traz todo o gostinho da tradicional paçoca em uma versão gelada e cremosa. Ideal para quem ama o sabor do amendoim.'; break;
-            case '3': description = 'Para os chocólatras de plantão, o sacolé de Chocolate é uma escolha certeira. Feito com chocolate de alta qualidade, ele é cremoso, saboroso e vai conquistar seu paladar.'; break;
-            case '4': description = 'Refresque-se com o sabor leve e frutado do sacolé de Maçã Verde. Perfeito para os dias quentes, é uma opção deliciosa e refrescante.'; break;
-            case '5': description = 'O sacolé Baba Azul é a escolha perfeita para quem adora um toque de nostalgia. Com um sabor doce e refrescante, ele vai trazer boas lembranças da infância.'; break;
-            case '6': description = 'Para os amantes de sabores tropicais, o sacolé de Mousse de Maracujá é irresistível. Cremoso e com o toque azedinho do maracujá, é uma verdadeira delícia.'; break;
-            case '7': description = 'Se você prefere algo mais cítrico, o sacolé de Mousse de Limão é a escolha ideal. Com a combinação perfeita de doce e azedo, ele é refrescante e saboroso.'; break;
-            case '8': description = 'Nosso sacolé Delícia de Abacaxi é uma explosão de sabor tropical. Feito com pedaços de abacaxi e uma cremosidade irresistível, é perfeito para quem busca um sabor premium e refrescante.'; break;
-            case '9': description = 'Se você é fã de sobremesas clássicas, vai adorar o sacolé de Pudim. Com um sabor suave e aveludado, ele é uma verdadeira delícia em forma de sacolé.'; break;
-            case '10': description = 'A combinação perfeita de queijo com goiabada agora em versão sacolé. O sabor Romeu e Julieta é uma opção sofisticada e deliciosa para quem busca algo diferente e saboroso.'; break;
+            case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso kidudu Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
+            case '2': description = 'Experimente o nosso kidudu de Paçoca, que traz todo o gostinho da tradicional paçoca em uma versão gelada e cremosa. Ideal para quem ama o sabor do amendoim.'; break;
+            case '3': description = 'Para os chocólatras de plantão, o kidudu de Chocolate é uma escolha certeira. Feito com chocolate de alta qualidade, ele é cremoso, saboroso e vai conquistar seu paladar.'; break;
+            case '4': description = 'Refresque-se com o sabor leve e frutado do kidudu de Maçã Verde. Perfeito para os dias quentes, é uma opção deliciosa e refrescante.'; break;
+            case '5': description = 'O kidudu Baba Azul é a escolha perfeita para quem adora um toque de nostalgia. Com um sabor doce e refrescante, ele vai trazer boas lembranças da infância.'; break;
+            case '6': description = 'Para os amantes de sabores tropicais, o kidudu de Mousse de Maracujá é irresistível. Cremoso e com o toque azedinho do maracujá, é uma verdadeira delícia.'; break;
+            case '7': description = 'Se você prefere algo mais cítrico, o kidudu de Mousse de Limão é a escolha ideal. Com a combinação perfeita de doce e azedo, ele é refrescante e saboroso.'; break;
+            case '8': description = 'Nosso kidudu Delícia de Abacaxi é uma explosão de sabor tropical. Feito com pedaços de abacaxi e uma cremosidade irresistível, é perfeito para quem busca um sabor premium e refrescante.'; break;
+            case '9': description = 'Se você é fã de sobremesas clássicas, vai adorar o kidudu de Pudim. Com um sabor suave e aveludado, ele é uma verdadeira delícia em forma de kidudu.'; break;
+            case '10': description = 'A combinação perfeita de queijo com goiabada agora em versão kidudu. O sabor Romeu e Julieta é uma opção sofisticada e deliciosa para quem busca algo diferente e saboroso.'; break;
         }
 
+        //exibindo a imagem, a descrição e o preço no modal
         document.querySelector('#modal-img').src = img;
-        document.querySelector('#modal-description').innerHTML = description;
+        document.querySelector('#modal-img').alt = alt;
+        document.querySelector('#modal-title').textContent = title;
+        document.querySelector('#modal-description').textContent = description;
         document.querySelector('#modal-price').textContent = price;
     });
 });
 
+//fechar o modal se clicar fora dele
+const modal = document.querySelector('#modal');
+
+modal.addEventListener('click', (event) => {
+    if (event.target === modal) {
+        closeModal();
+    }
+});
+
+//Funções para adicionar e remover itens do carrinho
+
+modalBtn1 = document.querySelector('#modal-btn1');
+modalBtn2 = document.querySelector('#modal-btn2');
+modalQuantity = document.querySelector('#modal-quantity');
+
+//adicionando um evento de clique ao botão de remover
+modalBtn1.addEventListener('click', () => {
+    let quantity = parseInt(modalQuantity.textContent);
+    if (quantity > 1) {
+        quantity--;
+        modalQuantity.textContent = quantity;
+        decreasesPrice();
+    }
+
+});
+
+//adicionando um evento de clique ao botão de adicionar
+modalBtn2.addEventListener('click', () => {
+    let quantity = parseInt(modalQuantity.textContent);
+    if (quantity === 99) return;
+    quantity++;
+    modalQuantity.textContent = quantity;
+    sumPrice();
+});
+
+function sumPrice() {
+    const price = document.querySelector('.price').textContent;
+    const quantity = parseInt(modalQuantity.textContent);
+    const totalPrice = parseFloat(price.replace('R$ ', '').replace(',','.')) * quantity;
+    document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+}
+
+function decreasesPrice() {
+    const price = document.querySelector('.price').textContent;
+    const quantity = parseInt(modalQuantity.textContent);
+    const totalPrice = parseFloat(price.replace('R$ ', '').replace(',','.')) * quantity;
+    document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+}
+
 function closeModal() {
-    const modal = document.querySelector('#modal');
     modal.classList.remove('flex');
     modal.classList.add('hidden');
+    quantity = 1;
+    modalQuantity.textContent = quantity;
 }
