@@ -79,10 +79,7 @@ function openContactAccordion() {
 const date = new Date();
 const hour = date.getHours();
 
-//Verificar se hoje é domingo
-const day = date.getDay();
-
-if (hour >= 10 && hour <= 18 && day === 0) {
+if (hour >= 10 && hour <= 18) {
     document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Entrega disponível';
     document.querySelector('#open').classList.add('bg-green-500');
 } else {
