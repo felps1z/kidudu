@@ -215,3 +215,11 @@ products.forEach(product => {
         }
     });
 });
+
+//Modal Cart
+
+function openModalCart() {
+    const modalCart = document.querySelector('#modal-cart');
+    modalCart.classList.remove('hidden');
+    modalCart.classList.add('flex');
+}

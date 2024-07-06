@@ -67,11 +67,11 @@
 
             <!-- BOTÕES -->
             <div class="flex gap-6 items-center">
-                <a href="#" class="relative" title="Carrinho">
+                <button class="relative" title="Carrinho" onclick="openModalCart()">
                     <i class="fa fa-cart-shopping text-white" style="font-size: 24px;"></i>
                     <div class="flex justify-center items-center text-white rounded-full text-sm absolute -right-2 -top-2 bg-yellow-color h-4 w-4"
                         id="items"></div>
-                </a>
+                </button>
 
                 <!-- PC BOTAO -->
                 <a href="#produtos" class="hidden lg:flex bg-white py-3 px-12 rounded-full">
@@ -559,13 +559,71 @@
                                     class="shadow-sm border border-gray-border py-1 px-3 rounded-md hover:bg-gray-200"
                                     title="Aumentar quantidade">+</button>
                             </div>
-                            <button class="bg-red-color rounded-full text-white py-4 px-6">Adicionar <span class="font-bold" id="modal-price">R$ 2,50</span></button>
+                            <button class="bg-red-color rounded-full text-white py-4 px-6">Adicionar <span
+                                    class="font-bold" id="modal-price">R$ 2,50</span></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- FIM MODAL -->
+
+        <!-- MODAL CARRINHO DE COMPRAS -->
+        <div class="fixed top-0 left-0 w-full h-full z-50 bg-black/50 items-center justify-center hidden"
+            id="modal-cart">
+            <div class="bg-white flex flex-col md:flex-row gap-5 rounded-md p-5 w-[90%] max-w-screen-md">
+                <div>
+                    <div>
+                        <div>
+                            1
+                        </div>
+                        Endereço
+                    </div>
+                    <div>
+                        <div>
+                            2
+                        </div>
+                        Informações de atendimento
+                    </div>
+                    <div>
+                        <div>
+                            3
+                        </div>
+                        Confirmação
+                    </div>
+                    <h2>Seu endereço</h2>
+                    <div>
+                        <form>
+                            <div>
+                                <label for="rua">Rua</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                            <div>
+                                <label for="rua">Bairro</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                            <div>
+                                <label for="rua">Número</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                            <div>
+                                <label for="rua">CEP</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                            <div>
+                                <label for="rua">Referência</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                            <div>
+                                <label for="rua">Complemento</label>
+                                <input type="text" id="rua" placeholder="Ex.:" class="border border-gray-border rounded-full p-2 w-full">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- FIM MODAL CARRINHO DE COMPRAS -->
 
         <!-- QUEM SOMOS -->
         <section class="w-full max-w-screen-xl mx-auto py-4 px-5 md:px-10 my-8 gap-8" id="quemsomos">
