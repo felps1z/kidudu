@@ -11,14 +11,9 @@ function closeMenu() {
     menuMobile.classList.add('hidden');
 }
 
-//Adicionando itens ao carrinho
-function showItems() {
-    const elementItems = document.querySelector('#items');
-    let items = 0;
-    elementItems.innerHTML = items;
-}
 
-showItems();
+
+
 
 //Criação de um evento para sombra no header
 window.addEventListener('scroll', function () {
@@ -134,7 +129,7 @@ btn2.addEventListener('click', () => {
 
 // Selecionando todos os produtos
 const products = document.querySelectorAll('.produto');
-
+let quantity = 1; // Definindo a quantidade inicial
 // Adicionando um evento de clique a cada produto
 products.forEach(product => {
     product.addEventListener('click', () => {
@@ -169,11 +164,10 @@ products.forEach(product => {
         document.querySelector('#modal-title').textContent = title;
         document.querySelector('#modal-description').textContent = description;
         document.querySelector('#modal-price').textContent = price;
-
+        const modalQuantity = document.querySelector('#modal-quantity');
         const modalBtn1 = document.querySelector('#modal-btn1');
         const modalBtn2 = document.querySelector('#modal-btn2');
-        const modalQuantity = document.querySelector('#modal-quantity');
-        let quantity = 1; // Definindo a quantidade inicial
+
 
         // Função para atualizar quantidade e preço no modal
         function updatePrice() {
@@ -215,6 +209,23 @@ products.forEach(product => {
         }
     });
 });
+
+
+//Adicionando itens ao carrinho
+let items = 0;
+function showItems() {
+    const elementItems = document.querySelector('#items');
+    elementItems.innerHTML = items;
+}
+
+showItems();
+
+function addItem() {
+    items += quantity; 
+    showItems(); 
+}
+
+
 
 //Modal Cart
 
