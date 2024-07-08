@@ -1,0 +1,67 @@
+<!-- CABEÇALHO -->
+<div class="flex flex-row justify-center gap-4 relative">
+    <!-- BOTÂO VOLTAR -->
+    <a href="modal-cart-1.html" class="absolute left-0 top-0 nextModalBtn" title="Voltar">
+        <i class="fa fa-arrow-left text-red-color" style="font-size: 32px;"></i>
+    </a>
+    <!-- FIM BOTÂO VOLTAR -->
+
+    <div class="hidden md:flex items-center text-red-color/50">
+        <div class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
+            1
+        </div>
+        Endereço
+    </div>
+
+    <div class="flex items-center text-red-color">
+        <div class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color/50">
+            2
+        </div>
+        Informações
+    </div>
+
+
+    <div class="hidden md:flex items-center text-red-color/50">
+        <div class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
+            3
+        </div>
+        Confirmação
+    </div>
+</div>
+<!-- FIM CABEÇALHO -->
+
+<!-- TITULO -->
+<h2 class="text-3xl md:text-4xl text-red-color font-bold mb-4 mt-8">Informações</h2>
+<!-- FIM TITULO -->
+
+<!-- FORM -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+    <div>
+        <label for="nome">Nome <span class="text-yellow-color">*</span></label>
+        <input type="text" id="nome" placeholder="Rua das Flores"
+            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
+    </div>
+    <div>
+        <label for="telefone">Telefone <span class="text-yellow-color">*</span></label>
+        <input type="text" id="telefone" placeholder="123"
+            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
+    </div>
+    <div>
+        <label for="forma-pagamento">Forma de pagamento <span class="text-yellow-color">*</span></label>
+        <input type="text" id="forma-pagamento" placeholder="Centro"
+            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
+    </div>
+    <div class="hidden">
+        <label for="cep">CEP <span class="text-yellow-color">*</span></label>
+        <input type="text" id="cep" placeholder="12345-678"
+            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
+    </div>
+</div>
+<!-- FIM FORM -->
+
+<a href="modal-cart-3.html"
+    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn">
+    <span>Prosseguir</span>
+    <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>
+</a>

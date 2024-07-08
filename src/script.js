@@ -208,19 +208,78 @@ products.forEach(product => {
 
 
 
+//Definindo Modal Cart
+const modalCart = document.querySelector('#modal-cart');
 
+document.addEventListener('click', e => {
+    const el = e.target.closest('.nextModalBtn');
+    if (el) {
+        e.preventDefault();
+        carregaPagina(el);
+    }
+});
 
-//Modal Cart
+//Usando Fetch API para carregar a página
+function carregaPagina(el) {
+    const href = el.getAttribute('href');
 
+    fetch(href)
+        .then(response => {
+            if (response.status !== 200) throw new Error('ERRO 404');
+            return response.text();
+        })
+        .then(html => carregaResultado(html))
+        .catch(error => console.log(error));
+}
+
+//Jogando o resultado na div .result
+function carregaResultado(response) {
+    const resultado = document.querySelector('.result');
+    resultado.innerHTML = response;
+}
+
+//Abrir modal cart
 function openModalCart() {
-    const modalCart = document.querySelector('#modal-cart');
     modalCart.classList.remove('hidden');
     modalCart.classList.add('flex');
 }
 
+//Fechar modal cart
+function closeModalCart() {
+    modalCart.classList.remove('flex');
+    modalCart.classList.add('hidden');
+}
+
+//Evento na area de produtos
+const produtos = document.querySelector('#produtos');
+
+produtos.addEventListener('click', (event) => {
+    let parentButton = event.target.closest('.add-to-cart-btn');
+
+    if (parentButton) {
+        const name = parentButton.getAttribute('data-name');
+        const price = parseFloat(parentButton.getAttribute('data-price'));
+        console.log(name, price);
+    }
+
+    //Adicionar ao carrinho
+});
+
+form1.addEventListener('submit', (event) => {
+    event.preventDefault();
+
+    const rua = form1.querySelector('#rua').value;
+    const numero = form1.querySelector('#numero').value;
+    const bairro = form1.querySelector('#bairro').value;
+    const cep = form1.querySelector('#cep').value;
+    const referencia = form1.querySelector('#referencia').value;
+    const complemento = form1.querySelector('#complemento').value;
+    console.log(rua, numero, bairro, cep, referencia, complemento);
+});
 
 
 //Adicionando itens ao carrinho
+/*
 let items = 0;
 function showItems() {
     const elementItems = document.querySelector('#items');
@@ -230,4 +289,4 @@ showItems();
 function addItem() {
     items += quantity; 
     showItems(); 
-}
+}*/
