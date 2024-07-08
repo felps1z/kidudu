@@ -136,14 +136,12 @@ products.forEach(product => {
         const modal = document.querySelector('#modal');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
-
         const img = product.querySelector('img').src;
         const alt = product.querySelector('img').alt;
         const title = product.querySelector('h3').textContent;
         const price = product.querySelector('.price').textContent;
         const productId = product.getAttribute('data-product-id');
         let description = '';
-
         // Verificando qual é o produto clicado e exibindo a descrição correspondente
         switch (productId) {
             case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso kidudu Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
@@ -167,8 +165,6 @@ products.forEach(product => {
         const modalQuantity = document.querySelector('#modal-quantity');
         const modalBtn1 = document.querySelector('#modal-btn1');
         const modalBtn2 = document.querySelector('#modal-btn2');
-
-
         // Função para atualizar quantidade e preço no modal
         function updatePrice() {
             const priceElement = parseFloat(price.replace('R$ ', '').replace(',', '.'));
@@ -211,19 +207,6 @@ products.forEach(product => {
 });
 
 
-//Adicionando itens ao carrinho
-let items = 0;
-function showItems() {
-    const elementItems = document.querySelector('#items');
-    elementItems.innerHTML = items;
-}
-
-showItems();
-
-function addItem() {
-    items += quantity; 
-    showItems(); 
-}
 
 
 
@@ -233,4 +216,18 @@ function openModalCart() {
     const modalCart = document.querySelector('#modal-cart');
     modalCart.classList.remove('hidden');
     modalCart.classList.add('flex');
+}
+
+
+
+//Adicionando itens ao carrinho
+let items = 0;
+function showItems() {
+    const elementItems = document.querySelector('#items');
+    elementItems.innerHTML = items;
+}
+showItems();
+function addItem() {
+    items += quantity; 
+    showItems(); 
 }
