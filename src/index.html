@@ -569,66 +569,78 @@
         <!-- FIM MODAL -->
 
         <!-- MODAL CARRINHO DE COMPRAS -->
-        <div class="fixed top-0 left-0 w-full h-screen z-50 bg-black/50 justify-center hidden overflow-y-scroll"
+        <div class="fixed top-0 left-0 w-full h-full z-50 bg-black/50 justify-center items-center hidden overflow-hidden"
             id="modal-cart">
-            <div class="bg-white flex flex-col rounded-2xl p-5 w-[90%] max-w-screen-md mt-5">
 
-                <div class="flex flex-col md:flex-row gap-4">
+            <div class="bg-white flex flex-col p-5 md:p-10 w-full h-full md:h-auto max-w-screen-md md:rounded-2xl">
+                <div class="flex flex-row justify-center gap-4 relative">
+                    <!-- BOTÂO VOLTAR -->
+                    <button class="absolute left-0 top-0" title="Voltar">
+                        <i class="fa fa-arrow-left text-red-color" style="font-size: 32px;"></i>
+                    </button>
+                    <!-- FIM BOTÂO VOLTAR -->
+
                     <div class="flex items-center text-red-color">
                         <div class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color">
                             1
                         </div>
                         Endereço
                     </div>
-                    <div class="flex items-center text-red-color">
+
+                    <div class="hidden md:flex items-center text-red-color">
                         <div class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color">
                             2
                         </div>
                         Informações de atendimento
                     </div>
-                    <div class="flex items-center text-red-color">
+
+                    <div class="hidden md:flex items-center text-red-color">
                         <div class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color">
                             3
                         </div>
                         Confirmação
                     </div>
                 </div>
-                <h2 class="text-2xl text-red-color font-bold my-4">Seu endereço</h2>
+                <h2 class="text-3xl md:text-4xl text-red-color font-bold mb-4 mt-8">Seu endereço</h2>
 
-                <form class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    <div>
-                        <label for="rua">Rua <span class="text-yellow-color">*</span></label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
+                <form>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        
+                        <div>
+                            <label for="rua">Rua <span class="text-yellow-color">*</span></label>
+                            <input type="text" id="rua" placeholder="Rua das Flores"
+                                class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                        </div>
+                        <div>
+                            <label for="rua">Número <span class="text-yellow-color">*</span></label>
+                            <input type="text" id="rua" placeholder="123"
+                                class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                        </div>
+                        <div>
+                            <label for="rua">Bairro <span class="text-yellow-color">*</span></label>
+                            <input type="text" id="rua" placeholder="Centro"
+                                class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                        </div>
+                        <div>
+                            <label for="rua">CEP <span class="text-yellow-color">*</span></label>
+                            <input type="text" id="rua" placeholder="12345-678"
+                                class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                        </div>
+                        <div class="flex md:col-span-2 gap-4">
+                            <div class="flex-1">
+                                <label for="rua">Referência</label>
+                                <input type="text" id="rua" placeholder="Próximo ao supermercado"
+                                    class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                            </div>
+                            <div class="flex-1">
+                                <label for="rua">Complemento</label>
+                                <input type="text" id="rua" placeholder="Apt 101, Bloco B"
+                                    class="border border-gray-border rounded-full py-2 px-4 w-full font-normal text-ellipsis">
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <label for="rua">Bairro <span class="text-yellow-color">*</span></label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
-                    </div>
-                    <div>
-                        <label for="rua">Número <span class="text-yellow-color">*</span></label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
-                    </div>
-                    <div>
-                        <label for="rua">CEP <span class="text-yellow-color">*</span></label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
-                    </div>
-                    <div>
-                        <label for="rua">Referência</label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
-                    </div>
-                    <div>
-                        <label for="rua">Complemento</label>
-                        <input type="text" id="rua" placeholder="Ex.:"
-                            class="border border-gray-border rounded-full p-2 w-full">
-                    </div>
-                    <button type="submit" class="bg-red-color px-10 py-5 text-white rounded-full">Prosseguir</button>
+                    <button type="submit" class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 w-full md:w-auto"><span>Prosseguir</span> <i class="fa fa-arrow-right ml-2 group-hover:translate-x-1 duration-300"></i></button>
                 </form>
-
             </div>
         </div>
         <!-- FIM MODAL CARRINHO DE COMPRAS -->
