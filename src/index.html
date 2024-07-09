@@ -10,10 +10,7 @@
         * {
             scroll-behavior: smooth;
             font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" */
         }
-
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
     </style>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -561,11 +558,11 @@
                         <div class="flex justify-between mt-4">
                             <div class="flex items-center gap-1">
                                 <button id="modal-btn1"
-                                    class="shadow-sm border border-gray-border py-1 px-3 rounded-md hover:bg-gray-200"
+                                    class="shadow-sm border border-gray-border py-2 px-4 rounded-md hover:bg-gray-100"
                                     title="Diminuir quantidade">-</button>
-                                <div id="modal-quantity" class="shadow-sm py-1 px-3 rounded-md">1</div>
+                                <div id="modal-quantity" class="shadow-sm py-2 px-3 lg:px-4 rounded-md">1</div>
                                 <button id="modal-btn2"
-                                    class="shadow-sm border border-gray-border py-1 px-3 rounded-md hover:bg-gray-200"
+                                    class="shadow-sm border border-gray-border py-2 px-4 rounded-md hover:bg-gray-100"
                                     title="Aumentar quantidade">+</button>
                             </div>
                             <button class="bg-red-color rounded-full text-white py-4 px-6" onclick="addItem()">Adicionar
@@ -624,12 +621,12 @@
 
                 <!-- FORM -->
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    
+
                     <div>
                         <label for="rua">Rua <span class="text-yellow-color">*</span></label>
                         <input type="text" id="rua" placeholder="Rua das Flores"
                             class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-                        </div>
+                    </div>
                     <div>
                         <label for="numero">Número <span class="text-yellow-color">*</span></label>
                         <input type="text" id="numero" placeholder="123"
@@ -644,12 +641,12 @@
                         <label for="cep">CEP <span class="text-yellow-color">*</span></label>
                         <input type="text" id="cep" placeholder="12345-678"
                             class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-                        </div>
+                    </div>
                     <div class="flex md:col-span-2 gap-4">
                         <div class="flex-1">
                             <label for="referencia">Referência</label>
                             <input type="text" id="referencia" placeholder="Próximo ao supermercado"
-                            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
+                                class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                         </div>
                         <div class="flex-1">
                             <label for="complemento">Complemento</label>
@@ -659,7 +656,7 @@
                     </div>
                 </div>
                 <!-- FIM FORM -->
-                
+
                 <a href="modal-cart-2.html"
                     class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"><span>Prosseguir</span>
                     <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>

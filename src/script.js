@@ -40,12 +40,6 @@ ScrollReveal().reveal('#loc-title', {
     distance: '20%'
 });
 
-ScrollReveal().reveal('#img-contato', {
-    origin: 'bottom',
-    duration: 2000,
-    distance: '20%'
-});
-
 //Accordion de Menu - Mobile
 const am = document.querySelector('#accordion-menu');
 const minusMenu = document.querySelector('#minus-menu');
@@ -129,19 +123,25 @@ btn2.addEventListener('click', () => {
 
 // Selecionando todos os produtos
 const products = document.querySelectorAll('.produto');
-let quantity = 1; // Definindo a quantidade inicial
 // Adicionando um evento de clique a cada produto
 products.forEach(product => {
     product.addEventListener('click', () => {
+        let quantity = 1;
+
+        //Abrindo modal ao clicar no produto
         const modal = document.querySelector('#modal');
         modal.classList.remove('hidden');
         modal.classList.add('flex');
+
+        // Pegando os dados do produto clicado
         const img = product.querySelector('img').src;
         const alt = product.querySelector('img').alt;
         const title = product.querySelector('h3').textContent;
         const price = product.querySelector('.price').textContent;
         const productId = product.getAttribute('data-product-id');
+
         let description = '';
+
         // Verificando qual é o produto clicado e exibindo a descrição correspondente
         switch (productId) {
             case '1': description = 'Delicie-se com o sabor clássico e irresistível do nosso kidudu Sensação. Combinando o sabor do morango e um toque de chocolate, ele é perfeito para refrescar e adoçar o seu dia.'; break;
@@ -162,31 +162,34 @@ products.forEach(product => {
         document.querySelector('#modal-title').textContent = title;
         document.querySelector('#modal-description').textContent = description;
         document.querySelector('#modal-price').textContent = price;
+
+        // botões de adicionar e remover
         const modalQuantity = document.querySelector('#modal-quantity');
         const modalBtn1 = document.querySelector('#modal-btn1');
         const modalBtn2 = document.querySelector('#modal-btn2');
-        // Função para atualizar quantidade e preço no modal
+
+        // Função para atualizar o preço ao adicionar ou remover um item
         function updatePrice() {
             const priceElement = parseFloat(price.replace('R$ ', '').replace(',', '.'));
             const totalPrice = priceElement * quantity;
             document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
         }
 
-        // Adicionando um evento de clique ao botão de remover
+        // evento de clique ao botão de remover
         modalBtn1.addEventListener('click', () => {
             if (quantity > 1) {
                 quantity--;
                 modalQuantity.textContent = quantity;
-                updatePrice(); // Atualiza o preço ao remover um item
+                updatePrice();
             }
         });
 
-        // Adicionando um evento de clique ao botão de adicionar
+        // evento de clique ao botão de adicionar
         modalBtn2.addEventListener('click', () => {
             if (quantity < 99) {
                 quantity++;
                 modalQuantity.textContent = quantity;
-                updatePrice(); // Atualiza o preço ao adicionar um item
+                updatePrice();
             }
         });
 
@@ -200,7 +203,7 @@ products.forEach(product => {
         function closeModal() {
             modal.classList.remove('flex');
             modal.classList.add('hidden');
-            quantity = 1; // Resetando a quantidade ao fechar o modal
+            quantity = 1;
             modalQuantity.textContent = quantity;
         }
     });
@@ -250,6 +253,13 @@ function closeModalCart() {
     modalCart.classList.add('hidden');
 }
 
+//Fechar modal ao clicar fora dele
+modalCart.addEventListener('click', (event) => {
+    if (event.target === modalCart) {
+        closeModalCart();
+    }
+});
+/*
 //Evento na area de produtos
 const produtos = document.querySelector('#produtos');
 
@@ -276,17 +286,25 @@ form1.addEventListener('submit', (event) => {
     const complemento = form1.querySelector('#complemento').value;
     console.log(rua, numero, bairro, cep, referencia, complemento);
 });
-
+*/
 
 //Adicionando itens ao carrinho
-/*
+
+const modalQuantity = document.querySelector('#modal-quantity');
 let items = 0;
+
 function showItems() {
     const elementItems = document.querySelector('#items');
     elementItems.innerHTML = items;
 }
+
 showItems();
+
 function addItem() {
-    items += quantity; 
-    showItems(); 
-}*/
+    items += parseFloat(modalQuantity.textContent);
+    showItems();
+    
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+    modalQuantity.textContent = 1;
+}

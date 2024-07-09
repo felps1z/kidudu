@@ -15,10 +15,7 @@ module.exports = {
         "gray-bg": "#F3F3F3",
         "success": "#42CA20",
         "danger": "#FF0000",
-      },
-      /*fontFamily: { 
-        "sans": ["Inter", "sans-serif"]
-      }*/
+      }
     },
   },
   plugins: [],
