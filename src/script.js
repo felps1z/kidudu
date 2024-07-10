@@ -281,6 +281,11 @@ showCountItems();
 
 // MODAL - Adicionando itens ao carrinho (Ao clicar no botão de adicionar)
 
+function closeModal() {
+    modal.classList.remove('flex');
+    modal.classList.add('hidden');
+}
+
 function addItem() {
     let modalQuantity = parseInt(document.querySelector('#modal-quantity').textContent);
     items += modalQuantity;
@@ -293,7 +298,9 @@ function addItem() {
 
     if (existingItems) {
         existingItems.quantity += modalQuantity;
+        existingItems.price += price;
         console.log(cart);
+        closeModal();
         return;
     } else {
         const product = {
@@ -304,8 +311,6 @@ function addItem() {
 
         cart.push(product);
         console.log(cart);
+        closeModal();
     }
-
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
 }

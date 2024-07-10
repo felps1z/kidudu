@@ -1364,18 +1364,6 @@ video {
     height: 20rem;
   }
 
-  .md\:h-auto {
-    height: auto;
-  }
-
-  .md\:h-\[\] {
-    height: ;
-  }
-
-  .md\:h-\[522\] {
-    height: 522;
-  }
-
   .md\:h-\[522px\] {
     height: 522px;
   }
