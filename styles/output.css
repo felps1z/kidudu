@@ -850,6 +850,10 @@ video {
   max-width: 20rem;
 }
 
+.max-w-lg {
+  max-width: 32rem;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
@@ -864,10 +868,6 @@ video {
 
 .max-w-sm {
   max-width: 24rem;
-}
-
-.max-w-lg {
-  max-width: 32rem;
 }
 
 .flex-1 {
@@ -1366,6 +1366,18 @@ video {
 
   .md\:h-auto {
     height: auto;
+  }
+
+  .md\:h-\[\] {
+    height: ;
+  }
+
+  .md\:h-\[522\] {
+    height: 522;
+  }
+
+  .md\:h-\[522px\] {
+    height: 522px;
   }
 
   .md\:flex-1 {

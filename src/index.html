@@ -565,7 +565,7 @@
                                     class="shadow-sm border border-gray-border py-2 px-4 rounded-md hover:bg-gray-100"
                                     title="Aumentar quantidade">+</button>
                             </div>
-                            <button class="bg-red-color rounded-full text-white py-4 px-6" onclick="addItem()">Adicionar
+                            <button class="bg-red-color rounded-full text-white py-4 px-6" onclick="addItem()" id="addToCartBtn">Adicionar
                                 <span class="font-bold" id="modal-price">R$ 2,50</span></button>
                         </div>
                     </div>
@@ -579,8 +579,10 @@
             id="modal-cart">
 
             <div
-                class="bg-white flex flex-col p-5 md:p-10 w-full h-full md:h-auto max-w-screen-md md:rounded-2xl result">
+                class="bg-white flex flex-col justify-between p-5 md:p-10 w-full h-full md:h-[522px] max-w-screen-md md:rounded-2xl result">
+        <div>
 
+        
                 <!-- CABEÇALHO -->
                 <div class="flex flex-row justify-center gap-4 relative">
                     <!-- BOTÂO VOLTAR -->
@@ -656,7 +658,7 @@
                     </div>
                 </div>
                 <!-- FIM FORM -->
-
+            </div>
                 <a href="modal-cart-2.html"
                     class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"><span>Prosseguir</span>
                     <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>

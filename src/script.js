@@ -1,5 +1,6 @@
 //Menu Navbar - Mobile
 const menuMobile = document.querySelector('#menu-mobile');
+let cart = [];
 
 function openMenu() {
     menuMobile.classList.remove('hidden');
@@ -10,10 +11,6 @@ function closeMenu() {
     menuMobile.classList.remove('block');
     menuMobile.classList.add('hidden');
 }
-
-
-
-
 
 //Criação de um evento para sombra no header
 window.addEventListener('scroll', function () {
@@ -62,7 +59,7 @@ function openContactAccordion() {
     plusContact.classList.toggle('hidden');
 }
 
-//Data e Hora
+// HORA DE FUNCIONAMENTO
 
 //Verificar se a hora atual está entre 10h e 18h
 const date = new Date();
@@ -76,10 +73,11 @@ if (hour >= 10 && hour <= 18) {
     document.querySelector('#open').classList.add('bg-red-500');
 }
 
-//Carrossel
+// CARROSSEL
 
 const slides = document.querySelector('#slides')
 
+//Carrossel automático
 setInterval(() => {
     slides.style.transition = 'transform 1s ease-in-out';
     slides.style.transform = 'translateX(-100%)';
@@ -88,22 +86,21 @@ setInterval(() => {
     slides.style.transform = 'translateX(0)';
 }, 20000);
 
-//Botões do carrossel
-
+//Botões de controle do carrossel
 const btn2 = document.querySelector('#btn2');
 const btn1 = document.querySelector('#btn1');
 
+//Mudando a cor dos botões de acordo com o slide
 setInterval(() => {
     btn2.style.backgroundColor = '#000';
     btn1.style.backgroundColor = '#A5A5A5';
 }, 10000);
-
 setInterval(() => {
     btn1.style.backgroundColor = '#000';
     btn2.style.backgroundColor = '#A5A5A5';
 }, 20000);
 
-//Se o usuário clicar no botão 1, o slide volta para o primeiro
+//Se o usuário clicar no botão 1, o slide vai para o primeiro
 btn1.addEventListener('click', () => {
     slides.style.transition = 'transform 1s ease-in-out';
     slides.style.transform = 'translateX(0)';
@@ -119,7 +116,7 @@ btn2.addEventListener('click', () => {
     btn1.style.backgroundColor = '#A5A5A5';
 });
 
-//Modal
+// PRODUTOS E MODAL
 
 // Selecionando todos os produtos
 const products = document.querySelectorAll('.produto');
@@ -159,36 +156,45 @@ products.forEach(product => {
         // Exibindo a imagem, a descrição e o preço no modal
         document.querySelector('#modal-img').src = img;
         document.querySelector('#modal-img').alt = alt;
-        document.querySelector('#modal-title').textContent = title;
-        document.querySelector('#modal-description').textContent = description;
-        document.querySelector('#modal-price').textContent = price;
+        document.querySelector('#modal-title').innerHTML = title;
+        document.querySelector('#modal-description').innerHTML = description;
+        document.querySelector('#modal-price').innerHTML = price;
+        document.querySelector('#modal-quantity').innerHTML = quantity;
+
+
+
+
+        //Funcionalidades do modal
 
         // botões de adicionar e remover
         const modalQuantity = document.querySelector('#modal-quantity');
         const modalBtn1 = document.querySelector('#modal-btn1');
         const modalBtn2 = document.querySelector('#modal-btn2');
+ 
+        function updateQuantity() {
+            modalQuantity.innerHTML = quantity;
+        }
 
-        // Função para atualizar o preço ao adicionar ou remover um item
         function updatePrice() {
             const priceElement = parseFloat(price.replace('R$ ', '').replace(',', '.'));
             const totalPrice = priceElement * quantity;
-            document.querySelector('#modal-price').textContent = `R$ ${totalPrice.toFixed(2)}`;
+            document.querySelector('#modal-price').innerHTML = `R$ ${totalPrice.toFixed(2)}`;
         }
 
         // evento de clique ao botão de remover
         modalBtn1.addEventListener('click', () => {
             if (quantity > 1) {
                 quantity--;
-                modalQuantity.textContent = quantity;
+                updateQuantity();
                 updatePrice();
             }
         });
-
+        
         // evento de clique ao botão de adicionar
         modalBtn2.addEventListener('click', () => {
             if (quantity < 99) {
                 quantity++;
-                modalQuantity.textContent = quantity;
+                updateQuantity();
                 updatePrice();
             }
         });
@@ -201,19 +207,20 @@ products.forEach(product => {
         });
 
         function closeModal() {
+            quantity = 1;
+            updateQuantity();
+            updatePrice();
             modal.classList.remove('flex');
             modal.classList.add('hidden');
-            quantity = 1;
-            modalQuantity.textContent = quantity;
         }
     });
 });
 
+//MODAL CART
 
-
-//Definindo Modal Cart
 const modalCart = document.querySelector('#modal-cart');
 
+//Evento de clique no botão de prosseguir
 document.addEventListener('click', e => {
     const el = e.target.closest('.nextModalBtn');
     if (el) {
@@ -222,7 +229,7 @@ document.addEventListener('click', e => {
     }
 });
 
-//Usando Fetch API para carregar a página
+//Usando Fetch API para carregar a próxima página
 function carregaPagina(el) {
     const href = el.getAttribute('href');
 
@@ -241,70 +248,64 @@ function carregaResultado(response) {
     resultado.innerHTML = response;
 }
 
-//Abrir modal cart
+//Abrir
 function openModalCart() {
     modalCart.classList.remove('hidden');
     modalCart.classList.add('flex');
 }
 
-//Fechar modal cart
+//Fechar
 function closeModalCart() {
     modalCart.classList.remove('flex');
     modalCart.classList.add('hidden');
 }
 
-//Fechar modal ao clicar fora dele
+//Fechar ao clicar fora dele
 modalCart.addEventListener('click', (event) => {
     if (event.target === modalCart) {
         closeModalCart();
     }
 });
-/*
-//Evento na area de produtos
-const produtos = document.querySelector('#produtos');
 
-produtos.addEventListener('click', (event) => {
-    let parentButton = event.target.closest('.add-to-cart-btn');
+// HEADER - Contador de itens no carrinho
 
-    if (parentButton) {
-        const name = parentButton.getAttribute('data-name');
-        const price = parseFloat(parentButton.getAttribute('data-price'));
-        console.log(name, price);
-    }
-
-    //Adicionar ao carrinho
-});
-
-form1.addEventListener('submit', (event) => {
-    event.preventDefault();
-
-    const rua = form1.querySelector('#rua').value;
-    const numero = form1.querySelector('#numero').value;
-    const bairro = form1.querySelector('#bairro').value;
-    const cep = form1.querySelector('#cep').value;
-    const referencia = form1.querySelector('#referencia').value;
-    const complemento = form1.querySelector('#complemento').value;
-    console.log(rua, numero, bairro, cep, referencia, complemento);
-});
-*/
-
-//Adicionando itens ao carrinho
-
-const modalQuantity = document.querySelector('#modal-quantity');
 let items = 0;
 
-function showItems() {
+function showCountItems() {
     const elementItems = document.querySelector('#items');
     elementItems.innerHTML = items;
 }
 
-showItems();
+showCountItems();
+
+
+// MODAL - Adicionando itens ao carrinho (Ao clicar no botão de adicionar)
 
 function addItem() {
-    items += parseFloat(modalQuantity.textContent);
-    showItems();
-    
+    let modalQuantity = parseInt(document.querySelector('#modal-quantity').textContent);
+    items += modalQuantity;
+    showCountItems();
+
+    const name = document.querySelector('#modal-title').textContent;
+    let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
+
+    const existingItems = cart.find(product => product.name === name);
+
+    if (existingItems) {
+        existingItems.quantity += modalQuantity;
+        console.log(cart);
+        return;
+    } else {
+        const product = {
+            name: name,
+            price: price,
+            quantity: modalQuantity
+        };
+
+        cart.push(product);
+        console.log(cart);
+    }
+
     modal.classList.remove('flex');
     modal.classList.add('hidden');
-    modalQuantity.textContent = 1;
 }
