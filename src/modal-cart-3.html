@@ -31,8 +31,29 @@
 </div>
 <!-- FIM CABEÇALHO -->
 
-<a
-    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center gap-2 items-center nextModalBtn">
-    <span>Confirmar por Whatsapp</span>
-    <i class="fa-brands fa-whatsapp"></i>
-</a>
+<!-- TITULO -->
+<h2 class="text-3xl md:text-4xl text-black font-bold mb-4 mt-8">Seu(s) Pedido(s)</h2>
+<!-- FIM TITULO -->
+
+<div id="cartItemsContainer" class="overflow-y-auto"></div>
+
+<div class="flex-1">
+    <hr>
+    <div class="flex justify-between mt-4">
+        <span class="text-lg font-bold">Subtotal</span>
+        <span class="text-lg" id="cartSubtotalValue"></span>
+    </div>
+</div>
+
+<div class="flex items-center justify-between">
+    <a
+        class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center gap-2 items-center nextModalBtn">
+        <span>Confirmar por Whatsapp</span>
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <div>
+        <p>Subtotal + Taxa de entrega</p>
+        <p id="cartTotalValue"></p>
+    </div>
+</div>

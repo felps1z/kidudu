@@ -170,7 +170,7 @@ products.forEach(product => {
         const modalQuantity = document.querySelector('#modal-quantity');
         const modalBtn1 = document.querySelector('#modal-btn1');
         const modalBtn2 = document.querySelector('#modal-btn2');
- 
+
         function updateQuantity() {
             modalQuantity.innerHTML = quantity;
         }
@@ -189,7 +189,7 @@ products.forEach(product => {
                 updatePrice();
             }
         });
-        
+
         // evento de clique ao botão de adicionar
         modalBtn2.addEventListener('click', () => {
             if (quantity < 99) {
@@ -246,6 +246,10 @@ function carregaPagina(el) {
 function carregaResultado(response) {
     const resultado = document.querySelector('.result');
     resultado.innerHTML = response;
+
+    if (document.querySelector('#cartItemsContainer')) {
+        updateCartModal();
+    }
 }
 
 //Abrir
@@ -300,7 +304,9 @@ function addItem() {
         existingItems.quantity += modalQuantity;
         existingItems.price += price;
         console.log(cart);
+
         closeModal();
+        updateCartModal()
         return;
     } else {
         const product = {
@@ -311,6 +317,39 @@ function addItem() {
 
         cart.push(product);
         console.log(cart);
+
         closeModal();
+        updateCartModal();
     }
+}
+
+
+function updateCartModal() {
+    const cartItemsContainer = document.querySelector('#cartItemsContainer');
+    const cartSubtotalValue = document.querySelector('#cartSubtotalValue');
+    let SubtotalPrice = 0;
+    cartItemsContainer.innerHTML = '';
+
+    cart.forEach(item => {
+        const itemElement = document.createElement('div');
+
+        itemElement.innerHTML = `
+            <div class="flex items-center justify-between mb-4">
+                <div>    
+                    <p class="text-red-color text-xl">${item.name}</p>
+                    <p class="text-sm">(Quantidade: ${item.quantity})</p>
+                    <p class="text-sm">R$ ${item.price.toFixed(2)}</p>
+                </div>
+                
+                <button class="text-gray-text">Remover</button>
+            </div>
+        `;
+
+        SubtotalPrice += item.price;
+        
+        cartItemsContainer.appendChild(itemElement);
+
+    })
+
+    cartSubtotalValue.innerHTML = SubtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 }
