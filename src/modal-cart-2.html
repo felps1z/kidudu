@@ -43,30 +43,28 @@
 
         <div>
             <label for="nome">Nome <span class="text-yellow-color">*</span></label>
-            <input type="text" id="nome" placeholder="Rua das Flores"
+            <input type="text" id="nome" placeholder="Ex.: João da Silva"
                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
         </div>
         <div>
             <label for="telefone">Telefone <span class="text-yellow-color">*</span></label>
-            <input type="text" id="telefone" placeholder="123"
+            <input type="text" id="telefone" placeholder="Ex.: (11) 99999-9999"
                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
         </div>
         <div>
-            <label for="forma-pagamento">Forma de pagamento <span class="text-yellow-color">*</span></label>
-            <input type="text" id="forma-pagamento" placeholder="Centro"
+            <label for="pagamento">Forma de pagamento <span class="text-yellow-color">*</span></label>
+            <input type="text" id="pagamento" placeholder="Dinheiro, cartão de crédito, débito"
                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
         </div>
         <div class="hidden">
-            <label for="cep">CEP <span class="text-yellow-color">*</span></label>
-            <input type="text" id="cep" placeholder="12345-678"
-                class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
         </div>
     </div>
     <!-- FIM FORM -->
 
 </div>
-<a href="modal-cart-3.html"
-    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn">
+<button type="submit"
+    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"
+    data-href="modal-cart-3.html">
     <span>Prosseguir</span>
     <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>
-</a>
+</button>

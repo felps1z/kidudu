@@ -221,18 +221,25 @@ products.forEach(product => {
 
 const modalCart = document.querySelector('#modal-cart');
 
+const form = document.querySelector('#modal-cart form')
+
 //Evento de clique no botão de prosseguir
-document.addEventListener('click', e => {
-    const el = e.target.closest('.nextModalBtn');
-    if (el) {
-        e.preventDefault();
-        carregaPagina(el);
-    }
+form.addEventListener('submit', e => {
+    e.preventDefault();
+
+    const el = document.querySelector('.nextModalBtn');
+    console.log(el.getAttribute('data-href'))
+    carregaPagina(el);
+
+
 });
+//Lembrar: Adicionar um escutador com um fetch api dentro para cada um dos botoes/form que troca de tela (olhar exemplo do gpt)
+
+
 
 //Usando Fetch API para carregar a próxima página
 function carregaPagina(el) {
-    const href = el.getAttribute('href');
+    const href = el.getAttribute('data-href');
 
     fetch(href)
         .then(response => {
@@ -405,13 +412,13 @@ function eventRemoveCartItem() {
             } else if (item.quantity === 1) {
                 // Remover item do carrinho
                 cart.splice(index, 1);
-                
+
                 // Atualizar modal
                 updateCartModal();
 
                 // Atualizar contador
                 items--;
-                showCountItems(); 
+                showCountItems();
             }
         }
     }

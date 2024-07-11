@@ -30,7 +30,7 @@
     <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-40 shadow-lg">
         <div class="flex justify-center items-center my-6">
             <button onclick="closeMenu()">
-                <i class="fa fa-xmark text-red-color" style="font-size: 32px"></i>
+                <i class="fa fa-xmark text-red-500" style="font-size: 32px"></i>
             </button>
         </div>
         <nav class="flex flex-col gap-6 my-6">
@@ -581,7 +581,7 @@
         <div class="fixed top-0 left-0 w-full h-full z-50 bg-black/50 justify-center items-center hidden overflow-hidden"
             id="modal-cart">
 
-            <div
+            <form
                 class="bg-white flex flex-col justify-between p-5 md:p-10 w-full h-full md:h-[522px] max-w-screen-md md:rounded-2xl result">
                 <div>
 
@@ -629,44 +629,45 @@
 
                         <div>
                             <label for="rua">Rua <span class="text-yellow-color">*</span></label>
-                            <input type="text" id="rua" placeholder="Rua das Flores"
+                            <input type="text" id="rua" placeholder="Ex.: Rua das Flores"
                                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                         </div>
                         <div>
                             <label for="numero">Número <span class="text-yellow-color">*</span></label>
-                            <input type="text" id="numero" placeholder="123"
+                            <input type="text" id="numero" placeholder="Ex.: 123"
                                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                         </div>
                         <div>
                             <label for="bairro">Bairro <span class="text-yellow-color">*</span></label>
-                            <input type="text" id="bairro" placeholder="Centro"
+                            <input type="text" id="bairro" placeholder="Ex.: Centro"
                                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                         </div>
                         <div>
                             <label for="cep">CEP <span class="text-yellow-color">*</span></label>
-                            <input type="text" id="cep" placeholder="12345-678"
+                            <input type="text" id="cep" placeholder="Ex.: 12345-678"
                                 class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                         </div>
                         <div class="flex md:col-span-2 gap-4">
                             <div class="flex-1">
                                 <label for="referencia">Referência</label>
-                                <input type="text" id="referencia" placeholder="Próximo ao supermercado"
+                                <input type="text" id="referencia" placeholder="Ex.: Próximo ao supermercado"
                                     class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                             </div>
                             <div class="flex-1">
                                 <label for="complemento">Complemento</label>
-                                <input type="text" id="complemento" placeholder="Apt 101, Bloco B"
+                                <input type="text" id="complemento" placeholder="Ex.: Apt 101, Bloco B"
                                     class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
                             </div>
                         </div>
                     </div>
                     <!-- FIM FORM -->
                 </div>
-                <a href="modal-cart-2.html"
-                    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"><span>Prosseguir</span>
+                <button type="submit"
+                    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"
+                    data-href="modal-cart-2.html"><span>Prosseguir</span>
                     <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>
-                </a>
-            </div>
+                </button>
+            </form>
         </div>
         </div>
         <!-- FIM MODAL CART -->
