@@ -159,6 +159,7 @@ products.forEach(product => {
         document.querySelector('#modal-title').innerHTML = title;
         document.querySelector('#modal-description').innerHTML = description;
         document.querySelector('#modal-price').innerHTML = price;
+        document.querySelector('#modal-price').setAttribute('data-original-price', price);
         document.querySelector('#modal-quantity').innerHTML = quantity;
 
 
@@ -249,6 +250,7 @@ function carregaResultado(response) {
 
     if (document.querySelector('#cartItemsContainer')) {
         updateCartModal();
+        eventRemoveCartItem();
     }
 }
 
@@ -290,40 +292,54 @@ function closeModal() {
     modal.classList.add('hidden');
 }
 
+// Função de adicionar item ao carrinho
 function addItem() {
     let modalQuantity = parseInt(document.querySelector('#modal-quantity').textContent);
+
     items += modalQuantity;
-    showCountItems();
+    showCountItems(); // atualizar contador
 
     const name = document.querySelector('#modal-title').textContent;
-    let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
 
+    // Preço modificado
+    let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
+    console.log(price)
+
+    // Preço original (sem modificação) pegado do atributo data-original-price do elemento #modal-price
+    let originalPrice = parseFloat(document.querySelector('#modal-price').getAttribute('data-original-price').replace('R$ ', '').replace(',', '.'));
+    console.log(originalPrice)
+
+    // Se o produto já existir, 'existingItems' recebe true
     const existingItems = cart.find(product => product.name === name);
 
+    // Se existir, incrementa a quantidade e o preço
     if (existingItems) {
         existingItems.quantity += modalQuantity;
         existingItems.price += price;
-        console.log(cart);
 
         closeModal();
-        updateCartModal()
-        return;
+
+        updateCartModal();
+        eventRemoveCartItem();
     } else {
+        //Senão, cria um novo produto
         const product = {
             name: name,
             price: price,
+            originalPrice: originalPrice,
             quantity: modalQuantity
         };
 
         cart.push(product);
-        console.log(cart);
 
         closeModal();
+
         updateCartModal();
+        eventRemoveCartItem();
     }
 }
 
-
+//Função para atualizar o modal do carrinho
 function updateCartModal() {
     const cartItemsContainer = document.querySelector('#cartItemsContainer');
     const cartSubtotalValue = document.querySelector('#cartSubtotalValue');
@@ -341,15 +357,62 @@ function updateCartModal() {
                     <p class="text-sm">R$ ${item.price.toFixed(2)}</p>
                 </div>
                 
-                <button class="text-gray-text">Remover</button>
+                <button class="remove-from-cart-btn text-gray-text" data-name="${item.name}">Remover</button>
             </div>
         `;
 
         SubtotalPrice += item.price;
-        
-        cartItemsContainer.appendChild(itemElement);
 
+        cartItemsContainer.appendChild(itemElement);
     })
 
     cartSubtotalValue.innerHTML = SubtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+}
+
+//Função para remover item do carrinho
+function eventRemoveCartItem() {
+
+    //Escutador de eventos no container do carrinho
+    cartItemsContainer.addEventListener('click', (event) => {
+        //Verificando se o botão clicado é o de remover
+        if (event.target.classList.contains('remove-from-cart-btn')) {
+            const name = event.target.getAttribute('data-name');
+
+            removeItemCart(name);
+        }
+    })
+
+    //Função para remover item do carrinho (e depois atualizar o modal) com base em seu nome
+    function removeItemCart(name) {
+        const index = cart.findIndex(item => item.name === name);
+
+        // Se o o findIndex retornar -1, o item não existe
+        if (index !== -1) {
+            const item = cart[index];
+
+            // Se a quantidade do mesmo produto for maior que 1
+            if (item.quantity > 1) {
+                // Atualizar quantidade e preço
+                item.quantity--;
+                item.price = item.price - item.originalPrice;
+
+                // Atualizar modal
+                updateCartModal();
+
+                // Atualizar contador
+                items--;
+                showCountItems();
+            } else if (item.quantity === 1) {
+                // Remover item do carrinho
+                cart.splice(index, 1);
+                
+                // Atualizar modal
+                updateCartModal();
+
+                // Atualizar contador
+                items--;
+                showCountItems(); 
+            }
+        }
+    }
 }
