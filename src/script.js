@@ -163,8 +163,6 @@ products.forEach(product => {
         document.querySelector('#modal-quantity').innerHTML = quantity;
 
 
-
-
         //Funcionalidades do modal
 
         // botões de adicionar e remover
@@ -221,50 +219,122 @@ products.forEach(product => {
 
 const modalCart = document.querySelector('#modal-cart');
 
-const form = document.querySelector('#modal-cart form')
+//Função para capturar eventos dos forms
+function capturaEventos() {
+    //Verifica se existe o form 1 (PAGINA 1)
+    const form1 = document.querySelector('#form-modal-cart-1');
+    if (form1) {
+        form1.addEventListener('submit', e => {
+            e.preventDefault();
 
-//Evento de clique no botão de prosseguir
-form.addEventListener('submit', e => {
-    e.preventDefault();
+            //Pegando os dados do form
+            const rua = document.querySelector('#rua').value;
+            const numero = document.querySelector('#numero').value;
+            const bairro = document.querySelector('#bairro').value;
+            const cep = document.querySelector('#cep').value;
+            const referencia = document.querySelector('#referencia').value;
+            const complemento = document.querySelector('#complemento').value;
 
-    const el = document.querySelector('.nextModalBtn');
-    console.log(el.getAttribute('data-href'))
-    carregaPagina(el);
+            //Validação dos campos
+            if (!rua || !numero || !bairro || !cep) {
+                alert('Preencha todos os campos obrigatórios!');
+                return;
+            }
 
+            //Carrega a próxima página
+            carregaPagina('modal-cart-2.html');
+        });
+    }
 
-});
-//Lembrar: Adicionar um escutador com um fetch api dentro para cada um dos botoes/form que troca de tela (olhar exemplo do gpt)
+    //Verifica se existe o form 2 (PAGINA 2)
+    const form2 = document.querySelector('#form-modal-cart-2');
+    if (form2) {
+        form2.addEventListener('submit', e => {
+            e.preventDefault();
 
+            //Pegando os dados do form
+            const nome = document.querySelector('#nome').value;
+            const telefone = document.querySelector('#telefone').value;
+            const pagamento = document.querySelector('#pagamento').value;
+            const troco = document.querySelector('#troco').value;
 
+            //Validação dos campos
+            if (!nome || !telefone || !pagamento || (pagamento === 'dinheiro' && !troco)) {
+                alert('Preencha todos os campos obrigatórios!');
+                return;
+            }
 
-//Usando Fetch API para carregar a próxima página
-function carregaPagina(el) {
-    const href = el.getAttribute('data-href');
+            carregaPagina('modal-cart-3.html');
+        });
+        
+        //Evento no botão de voltar para o form 1
+        const backToForm1 = document.querySelector('#back-to-form-1');
+        backToForm1.addEventListener('click', e => {
+            e.preventDefault();
+            carregaPagina('modal-cart-1.html');
+        });
 
-    fetch(href)
-        .then(response => {
-            if (response.status !== 200) throw new Error('ERRO 404');
-            return response.text();
-        })
-        .then(html => carregaResultado(html))
-        .catch(error => console.log(error));
-}
+        //Adicionar 'precisa de troco?' caso seja em dinheiro
+        const pagamento = document.querySelector('#pagamento');
+        pagamento.addEventListener('change', e => {
+            const selected = e.target.value;
+            const troco = document.querySelector('#troco-container');
 
-//Jogando o resultado na div .result
-function carregaResultado(response) {
-    const resultado = document.querySelector('.result');
-    resultado.innerHTML = response;
+            if (selected === 'dinheiro') {
+                troco.classList.remove('hidden');
+                troco.classList.add('flex');
+            } else {
+                troco.classList.remove('flex');
+                troco.classList.add('hidden');
+            }
+        });
+    }
+    
+    //Verifica se existe o botão de voltar para o form 2 (PAGINA 3)
+    const backToForm2 = document.querySelector('#back-to-form-2');
+    if (backToForm2) {
+        backToForm2.addEventListener('click', e => {
+            e.preventDefault();
+            carregaPagina('modal-cart-2.html');
+        });
 
-    if (document.querySelector('#cartItemsContainer')) {
+        //Atualiza o modal do carrinho
         updateCartModal();
         eventRemoveCartItem();
     }
 }
 
-//Abrir
+//Captura os eventos dos forms inicialmente
+capturaEventos();
+
+//Função para carregar a próxima página
+async function carregaPagina(href) {
+    try {
+        const response = await fetch(href);
+
+        if (!response.ok) throw new Error('ERRO 404');
+        //response.status !== 200
+
+        const html = await response.text();
+        carregaResultado(html);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+//Jogando o resultado da requisição Fetch API na div .result
+function carregaResultado(response) {
+    document.querySelector('.result').innerHTML = response;
+
+    //Captura os eventos dos forms página carregada
+    capturaEventos();
+}
+
+//Ativado ao clicar no botão do carrinho
 function openModalCart() {
     modalCart.classList.remove('hidden');
     modalCart.classList.add('flex');
+    carregaPagina('modal-cart-1.html');
 }
 
 //Fechar
@@ -345,7 +415,6 @@ function addItem() {
         eventRemoveCartItem();
     }
 }
-
 //Função para atualizar o modal do carrinho
 function updateCartModal() {
     const cartItemsContainer = document.querySelector('#cartItemsContainer');

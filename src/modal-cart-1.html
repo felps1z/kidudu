@@ -1,80 +1,128 @@
-<div>
+<form id="form-modal-cart-1" class="flex flex-col justify-between h-full">
+    <div>
+        <!-- CABEÇALHO -->
+        <div class="flex flex-row justify-center gap-4 relative">
+            <!-- BOTÂO VOLTAR -->
+            <button class="absolute left-0 top-0" title="Fechar" onclick="closeModalCart()">
+                <i class="fa fa-arrow-left text-red-color" style="font-size: 32px;"></i>
+            </button>
+            <!-- FIM BOTÂO VOLTAR -->
 
-<!-- CABEÇALHO -->
-<div class="flex flex-row justify-center gap-4 relative">
-    <!-- BOTÂO VOLTAR -->
-    <button class="absolute left-0 top-0" title="Voltar" onclick="closeModalCart()">
-        <i class="fa fa-arrow-left text-red-color" style="font-size: 32px;"></i>
+            <div class="flex items-center text-red-color">
+                <div
+                    class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color">
+                    1
+                </div>
+                Endereço
+            </div>
+
+            <div class="hidden md:flex items-center text-red-color/50">
+                <div
+                    class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
+                    2
+                </div>
+                Informações
+            </div>
+
+            <div class="hidden md:flex items-center text-red-color/50">
+                <div
+                    class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
+                    3
+                </div>
+                Confirmação
+            </div>
+        </div>
+        <!-- FIM CABEÇALHO -->
+
+        <!-- TITULO -->
+        <div class="mb-4 mt-8">
+            <h2 class="text-3xl md:text-4xl text-black font-bold mb-1">Seu endereço</h2>
+            <p class="text-gray-500 font-normal text-sm">*Entregas somente para <span class="font-semibold">Belo Jardim
+                    - PE</span></p>
+        </div>
+        <!-- FIM TITULO -->
+
+        <!-- FORM -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <div>
+                <label for="rua" class="text-gray-600 h-full">Rua <span class="text-yellow-color">*</span></label>
+
+                <input type="text" id="rua" placeholder="Ex.: Rua das Flores"
+                    class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis">
+            </div>
+
+            <div>
+                <label for="numero" class="text-gray-600 h-full">Número <span class="text-yellow-color">*</span></label>
+                <input type="text" id="numero" placeholder="Ex.: 123"
+                    class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis">
+            </div>
+
+            <div class="flex flex-col">
+                <label for="bairro" class="text-gray-600 h-full">Bairro <span class="text-yellow-color">*</span></label>
+
+                <select
+                    class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis"
+                    id="bairro">
+                    <option value="" disabled selected>Selecione uma opção</option>
+                    <option value="5">São Pedro</option>
+                    <option value="5">Gameleir</option>
+                    <option value="6">Morada nobre</option>
+                    <option value="6">Maria Cristina</option>
+                    <option value="5">Centro</option>
+                    <option value="5">Boa Vista</option>
+                    <option value="5">Airton Maciel</option>
+                    <option value="5">Cohab 1</option>
+                    <option value="6">Santo Antônio</option>
+                    <option value="5">Pontilhão</option>
+                    <option value="5">Édson mororó</option>
+                    <option value="5">Ponte nova</option>
+                    <option value="5">Floresta</option>
+                    <option value="5">Felicianos</option>
+                    <option value="6">São Sebastião</option>
+                    <option value="7">Frei Damião</option>
+                    <option value="7">Alto limpo</option>
+                    <option value="7">Viana da br</option>
+                    <option value="7">Bela vista</option>
+                    <option value="7">Barragem</option>
+                    <option value="7">Tereza Mendonça</option>
+                    <option value="7">Cohab 2</option>
+                    <option value="8">Cohab 3</option>
+                    <option value="8">Viana da faculdade</option>
+                    <option value="8">Heliópolis</option>
+                    <option value="8">Euno Andrade</option>
+                </select>
+            </div>
+
+            <div>
+                <label for="cep" class="text-gray-600 h-full">CEP <span class="text-yellow-color">*</span></label>
+
+                <input type="text" id="cep" placeholder="Ex.: 12345-678"
+                    class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis">
+            </div>
+
+            <div class="flex md:col-span-2 gap-4">
+                <div class="flex-1">
+                    <label for="referencia" class="text-gray-600 h-full">Referência</label>
+
+                    <input type="text" id="referencia" placeholder="Ex.: Próximo ao supermercado"
+                        class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis">
+                </div>
+
+                <div class="flex-1">
+                    <label for="complemento" class="text-gray-600 h-full">Complemento</label>
+
+                    <input type="text" id="complemento" placeholder="Ex.: Apt 101, Bloco B"
+                        class="bg-transparent py-2 px-4 rounded-lg w-full font-normal outline-none border focus:border-slate-600 shadow-sm text-ellipsis">
+                </div>
+            </div>
+        </div>
+        <!-- FIM FORM -->
+    </div>
+    <button type="submit"
+        class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn"
+        id="btn-modal-cart">
+        <span>Prosseguir</span>
+        <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>
     </button>
-    <!-- FIM BOTÂO VOLTAR -->
-
-    <div class="flex items-center text-red-color">
-        <div class="flex justify-center items-center text-white rounded-full h-3 w-3 bg-red-color p-4 mr-2 border-2 border-red-color">
-            1
-        </div>
-        Endereço
-    </div>
-
-    <div class="hidden md:flex items-center text-red-color/50">
-        <div class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
-            2
-        </div>
-        Informações
-    </div>
-
-    <div class="hidden md:flex items-center text-red-color/50">
-        <div class="flex justify-center items-center text-red-color/50 rounded-full h-3 w-3 bg-white p-4 mr-2 border-2 border-red-color/50">
-            3
-        </div>
-        Confirmação
-    </div>
-</div>
-<!-- FIM CABEÇALHO -->
-
-<!-- TITULO -->
-<h2 class="text-3xl md:text-4xl text-black font-bold mb-4 mt-8">Seu endereço</h2>
-<!-- FIM TITULO -->
-
-<!-- FORM -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-    
-    <div>
-        <label for="rua">Rua <span class="text-yellow-color">*</span></label>
-        <input type="text" id="rua" placeholder="Ex.: Rua das Flores"
-        class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-    </div>
-    <div>
-        <label for="numero">Número <span class="text-yellow-color">*</span></label>
-        <input type="text" id="numero" placeholder="Ex.: 123"
-        class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-    </div>
-    <div>
-        <label for="bairro">Bairro <span class="text-yellow-color">*</span></label>
-        <input type="text" id="bairro" placeholder="Ex.: Centro"
-            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-        </div>
-        <div>
-            <label for="cep">CEP <span class="text-yellow-color">*</span></label>
-            <input type="text" id="cep" placeholder="Ex.: 12345-678"
-            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-        </div>
-        <div class="flex md:col-span-2 gap-4">
-            <div class="flex-1">
-                <label for="referencia">Referência</label>
-                <input type="text" id="referencia" placeholder="Ex.: Próximo ao supermercado"
-                class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-        </div>
-        <div class="flex-1">
-            <label for="complemento">Complemento</label>
-            <input type="text" id="complemento" placeholder="Ex.: Apt 101, Bloco B"
-            class="border border-gray-border rounded-full shadow-sm py-2 px-4 w-full font-normal text-ellipsis">
-        </div>
-    </div>
-</div>
-<!-- FIM FORM -->
-</div>
-<a href="modal-cart-2.html"
-    class="bg-red-color px-8 py-3 text-white rounded-full group mt-8 md:self-start flex justify-center items-center gap-2 nextModalBtn" id="move-to-modal-2">
-    <span>Prosseguir</span>
-    <i class="fa fa-arrow-right group-hover:translate-x-1 duration-300"></i>
-</a>
+</form>
