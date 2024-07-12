@@ -222,6 +222,16 @@ products.forEach(product => {
 //MODAL CART
 
 const modalCart = document.querySelector('#modal-cart');
+let rua;
+let numero;
+let nomeBairro;
+let precoBairro;
+let cep;
+let referencia;
+let complemento;
+
+let nome;
+let telefone;
 
 //Função para capturar eventos dos forms
 function capturaEventos() {
@@ -232,12 +242,11 @@ function capturaEventos() {
             e.preventDefault();
 
             //Pegando os dados do form
-            const rua = document.querySelector('#rua').value;
-            const numero = document.querySelector('#numero').value;
-            const bairro = document.querySelector('#bairro').value;
-            const cep = document.querySelector('#cep').value;
-            const referencia = document.querySelector('#referencia').value;
-            const complemento = document.querySelector('#complemento').value;
+            rua = document.querySelector('#rua').value;
+            numero = document.querySelector('#numero').value;
+            cep = document.querySelector('#cep').value;
+            referencia = document.querySelector('#referencia').value;
+            complemento = document.querySelector('#complemento').value;
 
             //Validação dos campos
             if (!rua || !numero || !bairro || !cep) {
@@ -248,6 +257,45 @@ function capturaEventos() {
             //Carrega a próxima página
             carregaPagina('modal-cart-2.html');
         });
+
+        //Adiciona o nome e o preco para o bairro selecionado
+        document.querySelector('#bairro').addEventListener('change', function() {
+            let numeroBairro = this.value;
+
+            let bairros = {
+                '1': { nome: 'São Pedro', preco: 5 },
+                '2': { nome: 'Gameleir', preco: 5 },
+                '3': { nome: 'Morada nobre', preco: 6 },
+                '4': { nome: 'Maria Cristina', preco: 6 },
+                '5': { nome: 'Centro', preco: 5 },
+                '6': { nome: 'Boa Vista', preco: 5 },
+                '7': { nome: 'Airton Maciel', preco: 5 },
+                '8': { nome: 'Cohab 1', preco: 5 },
+                '9': { nome: 'Santo Antônio', preco: 6 },
+                '10': { nome: 'Pontilhão', preco: 5 },
+                '11': { nome: 'Édson mororó', preco: 5 },
+                '12': { nome: 'Ponte nova', preco: 5 },
+                '13': { nome: 'Floresta', preco: 5 },
+                '14': { nome: 'Felicianos', preco: 5 },
+                '15': { nome: 'São Sebastião', preco: 6 },
+                '16': { nome: 'Frei Damião', preco: 7 },
+                '17': { nome: 'Alto limpo', preco: 7 },
+                '18': { nome: 'Viana da br', preco: 7 },
+                '19': { nome: 'Bela vista', preco: 7 },
+                '20': { nome: 'Barragem', preco: 7 },
+                '21': { nome: 'Tereza Mendonça', preco: 7 },
+                '22': { nome: 'Cohab 2', preco: 7 },
+                '23': { nome: 'Cohab 3', preco: 8 },
+                '24': { nome: 'Viana da faculdade', preco: 8 },
+                '25': { nome: 'Heliópolis', preco: 8 },
+                '26': { nome: 'Euno Andrade', preco: 8 }
+            };
+        
+            if (bairros[numeroBairro]) {
+                nomeBairro = bairros[numeroBairro].nome;
+                precoBairro = bairros[numeroBairro].preco;
+            }
+        });
     }
 
     //Verifica se existe o form 2 (PAGINA 2)
@@ -257,8 +305,8 @@ function capturaEventos() {
             e.preventDefault();
 
             //Pegando os dados do form
-            const nome = document.querySelector('#nome').value;
-            const telefone = document.querySelector('#telefone').value;
+            nome = document.querySelector('#nome').value;
+            telefone = document.querySelector('#telefone').value;
             const pagamento = document.querySelector('#pagamento').value;
             const troco = document.querySelector('#troco').value;
 
@@ -310,13 +358,18 @@ function capturaEventos() {
         const finalizarPedido = document.querySelector('#finalizar-pedido');
         finalizarPedido.addEventListener('click', e => {
             const cartItems = cart.map(item => `${item.name} (Quantidade: ${item.quantity})`).join(', ');
-            console.log(cartItems);
-            const message = encodeURIComponent(`Olá, gostaria de fazer o pedido dos seguintes itens: ${cartItems}`);  
-            const phone = '8191990338'; 
+
+            const message = encodeURIComponent(`
+            Nome: ${nome}
+            Telefone: ${telefone}
+            Endereço: ${rua}, ${numero} - ${nomeBairro}, ${cep} - ${referencia} - ${complemento}
+            `);
+            
+            const phone = '8192878433';
             //window.open(`https://wa.me/${phone}?text=${message} Endereço: qualquer`, '_blank');
             window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${message}`, '_blank');
         });
-    
+
     }
 }
 
@@ -396,11 +449,9 @@ function addItem() {
 
     // Preço modificado
     let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
-    console.log(price)
 
     // Preço original (sem modificação) pegado do atributo data-original-price do elemento #modal-price
     let originalPrice = parseFloat(document.querySelector('#modal-price').getAttribute('data-original-price').replace('R$ ', '').replace(',', '.'));
-    console.log(originalPrice)
 
     // Se o produto já existir, 'existingItems' recebe true
     const existingItems = cart.find(product => product.name === name);
@@ -435,6 +486,8 @@ function addItem() {
 function updateCartModal() {
     const cartItemsContainer = document.querySelector('#cartItemsContainer');
     const cartSubtotalValue = document.querySelector('#cartSubtotalValue');
+    const cartTotalValue = document.querySelector('#cartTotalValue');
+
     let SubtotalPrice = 0;
     cartItemsContainer.innerHTML = '';
 
@@ -458,7 +511,12 @@ function updateCartModal() {
         cartItemsContainer.appendChild(itemElement);
     })
 
+    let totalPrice = SubtotalPrice + precoBairro;
+
+
+    //Inserindo os valores no modal cart
     cartSubtotalValue.innerHTML = SubtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    cartTotalValue.innerHTML = `TOTAL: <span class="font-bold">${totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>`;
 }
 
 //Função para remover item do carrinho
