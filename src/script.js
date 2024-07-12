@@ -62,10 +62,14 @@ function openContactAccordion() {
 // HORA DE FUNCIONAMENTO
 
 //Verificar se a hora atual está entre 10h e 18h
-const date = new Date();
-const hour = date.getHours();
 
-if (hour >= 10 && hour <= 18) {
+function verificaHora() {
+    const date = new Date();
+    const hour = date.getHours();
+    return hour >= 10 && hour <= 18;
+}
+
+if (verificaHora()) {
     document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Entrega disponível';
     document.querySelector('#open').classList.add('bg-green-500');
 } else {
@@ -266,7 +270,7 @@ function capturaEventos() {
 
             carregaPagina('modal-cart-3.html');
         });
-        
+
         //Evento no botão de voltar para o form 1
         const backToForm1 = document.querySelector('#back-to-form-1');
         backToForm1.addEventListener('click', e => {
@@ -289,7 +293,7 @@ function capturaEventos() {
             }
         });
     }
-    
+
     //Verifica se existe o botão de voltar para o form 2 (PAGINA 3)
     const backToForm2 = document.querySelector('#back-to-form-2');
     if (backToForm2) {
@@ -301,6 +305,18 @@ function capturaEventos() {
         //Atualiza o modal do carrinho
         updateCartModal();
         eventRemoveCartItem();
+
+        //Enviar dados para API do WhatsApp
+        const finalizarPedido = document.querySelector('#finalizar-pedido');
+        finalizarPedido.addEventListener('click', e => {
+            const cartItems = cart.map(item => `${item.name} (Quantidade: ${item.quantity})`).join(', ');
+            console.log(cartItems);
+            const message = encodeURIComponent(`Olá, gostaria de fazer o pedido dos seguintes itens: ${cartItems}`);  
+            const phone = '8191990338'; 
+            //window.open(`https://wa.me/${phone}?text=${message} Endereço: qualquer`, '_blank');
+            window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${message}`, '_blank');
+        });
+    
     }
 }
 
