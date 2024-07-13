@@ -27,13 +27,13 @@
 <body id="inicio">
 
     <!-- NAVBAR MOBILE -->
-    <div id="menu-mobile" class="hidden fixed bg-white px-5 right-0 left-0 top-0 z-40 shadow-lg">
+    <div id="menu-mobile" class="hidden flex-col fixed bg-white px-5 right-0 left-0 top-0 z-40 shadow-lg">
         <div class="flex justify-center items-center my-6">
             <button onclick="closeMenu()">
                 <i class="fa fa-xmark text-red-500" style="font-size: 32px"></i>
             </button>
         </div>
-        <nav class="flex flex-col gap-6 my-6">
+        <nav class="flex flex-col gap-6 mb-6">
             <a href="#inicio" onclick="closeMenu()">Início</a>
             <a href="#produtos" onclick="closeMenu()">Nossos produtos</a>
             <a href="#quemsomos" onclick="closeMenu()">Quem somos</a>
@@ -44,7 +44,7 @@
     <!-- FIM NAVBAR MOBILE -->
 
     <!-- ALERTA -->
-    <div class="flex flex-col gap-2 w-60 sm:w-72 text-[10px] sm:text-xs z-50 shadow-md fixed opacity-0 duration-300" id="alert">
+    <div class="hidden flex-col gap-2 w-60 sm:w-72 text-[10px] sm:text-xs z-50 shadow-md fixed opacity-0 duration-300" id="alert">
         <div
             class="error-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-white px-[10px]">
             <div class="flex gap-2">

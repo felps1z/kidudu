@@ -668,6 +668,14 @@ video {
   top: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
+.top-20 {
+  top: 5rem;
+}
+
 .-z-10 {
   z-index: -10;
 }
@@ -927,6 +935,11 @@ video {
 
 .flex-1 {
   flex: 1 1 0%;
+}
+
+.-translate-x-1\/2 {
+  --tw-translate-x: -50%;
+  transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 
 .scale-75 {

@@ -9,14 +9,26 @@ const alertClose = document.querySelector('#alert-close');
 const alertDescription = document.querySelector('#alert-description');
 const header = document.querySelector('header');
 
+const DOMUtils = {
+    showElement: (element) => {
+        element.classList.remove('hidden');
+        element.classList.add('flex');
+    },
+    hideElement: (element) => {
+        element.classList.remove('flex');
+        element.classList.add('hidden');
+    },
+    toggleElement: (element) => {
+        element.classList.toggle('hidden');
+    }
+};
+
 function openMenu() {
-    menuMobile.classList.remove('hidden');
-    menuMobile.classList.add('block');
+    DOMUtils.showElement(menuMobile);
 }
 
 function closeMenu() {
-    menuMobile.classList.remove('block');
-    menuMobile.classList.add('hidden');
+    DOMUtils.hideElement(menuMobile);
 }
 
 //Criação de um evento para sombra no header
@@ -50,9 +62,9 @@ const minusMenu = document.querySelector('#minus-menu');
 const plusMenu = document.querySelector('#plus-menu');
 
 function openMenuAccordion() {
-    am.classList.toggle('hidden');
-    minusMenu.classList.toggle('hidden');
-    plusMenu.classList.toggle('hidden');
+    DOMUtils.toggleElement(am);
+    DOMUtils.toggleElement(minusMenu);
+    DOMUtils.toggleElement(plusMenu);
 }
 
 //Accordion de Contato - Mobile
@@ -61,9 +73,9 @@ const minusContact = document.querySelector('#minus-contact');
 const plusContact = document.querySelector('#plus-contact');
 
 function openContactAccordion() {
-    ac.classList.toggle('hidden');
-    minusContact.classList.toggle('hidden');
-    plusContact.classList.toggle('hidden');
+    DOMUtils.toggleElement(ac);
+    DOMUtils.toggleElement(minusContact);
+    DOMUtils.toggleElement(plusContact);
 }
 
 // HORA DE FUNCIONAMENTO
@@ -138,8 +150,7 @@ products.forEach(product => {
 
         //Abrindo modal ao clicar no produto
         const modal = document.querySelector('#modal');
-        modal.classList.remove('hidden');
-        modal.classList.add('flex');
+        DOMUtils.showElement(modal);
 
         // Pegando os dados do produto clicado
         const img = product.querySelector('img').src;
@@ -220,8 +231,7 @@ products.forEach(product => {
             quantity = 1;
             updateQuantity();
             updatePrice();
-            modal.classList.remove('flex');
-            modal.classList.add('hidden');
+            DOMUtils.hideElement(modal);
         }
     });
 });
@@ -276,7 +286,7 @@ function capturaEventos() {
 
             //Validação dos campos
             if (!rua || !numero || !nomeBairro || !cep) {
-                alert('Preencha todos os campos obrigatórios!');
+                showAlert('Preencha todos os campos', 'Os campos de rua, número, bairro e CEP estão vazios!');
                 return;
             }
 
@@ -376,11 +386,9 @@ function capturaEventos() {
             const troco = document.querySelector('#troco-container');
 
             if (selected === 'dinheiro') {
-                troco.classList.remove('hidden');
-                troco.classList.add('flex');
+                DOMUtils.showElement(troco);
             } else {
-                troco.classList.remove('flex');
-                troco.classList.add('hidden');
+                DOMUtils.hideElement(troco);
             }
         });
     }
@@ -469,6 +477,8 @@ function carregaResultado(response) {
 }
 
 function showAlert(msg, description) {
+    //Mostrando o alerta
+    DOMUtils.showElement(alert);
     
     //Posicionando o alerta
     alert.style.top = `${header.offsetHeight}px`;
@@ -478,23 +488,31 @@ function showAlert(msg, description) {
     alertMessage.innerHTML = msg;
     alertDescription.innerHTML = description;
 
-    //Mostrando o alerta
+
     alert.classList.remove('opacity-0');
     alert.style.transform = 'translateY(30px)';
     alert.classList.add('opacity-100');
 
     //Fechar alerta automaticamente após 5 segundos
     const tempo = setTimeout(() => {
+        //Escondendo o alerta
+        DOMUtils.hideElement(alert);
+
         alert.classList.remove('opacity-100');
         alert.style.transform = 'translateY(-30px)';
         alert.classList.add('opacity-0');
     }, 5000);
-
+    
     //Fechar alerta ao clicar no botão de fechar
     alertClose.addEventListener('click', () => {
+        //Escondendo o alerta
+        DOMUtils.hideElement(alert);
+
         alert.classList.remove('opacity-100');
         alert.style.transform = 'translateY(-30px)';
         alert.classList.add('opacity-0');
+
+        //Limpando o tempo
         clearTimeout(tempo)
     });
 }
@@ -506,15 +524,13 @@ function openModalCart() {
         return;
     };
 
-    modalCart.classList.remove('hidden');
-    modalCart.classList.add('flex');
+    DOMUtils.showElement(modalCart);
     carregaPagina('modal-cart-1.html');
 }
 
 //Fechar
 function closeModalCart() {
-    modalCart.classList.remove('flex');
-    modalCart.classList.add('hidden');
+    DOMUtils.hideElement(modalCart);
 }
 
 //Fechar ao clicar fora dele
@@ -539,8 +555,7 @@ showCountItems();
 // MODAL - Adicionando itens ao carrinho (Ao clicar no botão de adicionar)
 
 function closeModal() {
-    modal.classList.remove('flex');
-    modal.classList.add('hidden');
+    DOMUtils.hideElement(modal);
 }
 
 // Função de adicionar item ao carrinho
@@ -598,7 +613,6 @@ function updateCartModal() {
     const cartTotalValue = document.querySelector('#cartTotalValue');
 
     subtotalPrice = 0;
-    cartItemsContainer.innerHTML = '';
 
     cart.forEach(item => {
         const itemElement = document.createElement('div');
