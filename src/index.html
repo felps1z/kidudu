@@ -43,6 +43,34 @@
     </div>
     <!-- FIM NAVBAR MOBILE -->
 
+    <!-- ALERTA -->
+    <div class="flex flex-col gap-2 w-60 sm:w-72 text-[10px] sm:text-xs z-50 shadow-md fixed opacity-0 duration-300" id="alert">
+        <div
+            class="error-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-white px-[10px]">
+            <div class="flex gap-2">
+                <div class="text-[#d65563] bg-black/5 backdrop-blur-xl p-1 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                        stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round"
+                            d="M12 9v3.75m9-.75a9 9 0 1 1-18 0 9 9 0 0 1 18 0Zm-9 3.75h.008v.008H12v-.008Z"></path>
+                    </svg>
+                </div>
+                <div>
+                    <p class="text-black" id="alert-message">Please try again</p>
+                    <p class="text-gray-500" id="alert-description">This is the description part</p>
+                </div>
+            </div>
+            <button class="text-gray-600 hover:bg-white/10 p-1 rounded-md transition-colors ease-linear" id="alert-close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- FIM ALERTA -->
+
     <!-- HEADER -->
     <header class="w-full bg-red-color sticky top-0 z-30">
 
@@ -290,7 +318,7 @@
 
             <!-- TITULO -->
             <div class="flex justify-between mb-6">
-                <h2 class="font-semibold text-xl">Sabores Tradicionais</h2>
+                <h2 class="font-semibold text-2xl">Sabores Tradicionais</h2>
                 <div class="flex justify-center items-center rounded-md px-2 text-white text-sm" id="open"></div>
             </div>
             <!-- FIM TITULO -->
@@ -662,7 +690,8 @@
 
                 <!-- IMG -->
                 <div class="flex-1 relative flex justify-center md:order-2 scale-75 md:scale-90">
-                    <img src="./assets/iPhone-12-PRO.png" alt="iPhone 12 aberto no instagram da Kidudu" class="w-44">
+                    <img src="./assets/iPhone-12-PRO-www.instagram.com.png"
+                        alt="iPhone 12 aberto no instagram da Kidudu" class="w-44">
 
                     <img src="./assets/img-contato.png" alt="" class="absolute -bottom-12 -z-10">
                 </div>

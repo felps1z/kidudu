@@ -2,6 +2,13 @@
 const menuMobile = document.querySelector('#menu-mobile');
 let cart = [];
 
+//Variáveis do alerta
+const alert = document.querySelector('#alert');
+const alertMessage = document.querySelector('#alert-message');
+const alertClose = document.querySelector('#alert-close');
+const alertDescription = document.querySelector('#alert-description');
+const header = document.querySelector('header');
+
 function openMenu() {
     menuMobile.classList.remove('hidden');
     menuMobile.classList.add('block');
@@ -70,10 +77,10 @@ function verificaHora() {
 }
 
 if (verificaHora()) {
-    document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Entrega disponível';
+    document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Aberto agora';
     document.querySelector('#open').classList.add('bg-green-500');
 } else {
-    document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Entrega Indisponível';
+    document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Abre às 10:00';
     document.querySelector('#open').classList.add('bg-red-500');
 }
 
@@ -232,12 +239,31 @@ let complemento;
 
 let nome;
 let telefone;
+let pagamento;
+let troco;
 
 //Função para capturar eventos dos forms
 function capturaEventos() {
     //Verifica se existe o form 1 (PAGINA 1)
     const form1 = document.querySelector('#form-modal-cart-1');
     if (form1) {
+        if (localStorage.getItem('rua')) {
+            document.querySelector('#rua').value = localStorage.getItem('rua');
+        }
+        if (localStorage.getItem('numero')) {
+            document.querySelector('#numero').value = localStorage.getItem('numero');
+        }
+        if (localStorage.getItem('cep')) {
+            document.querySelector('#cep').value = localStorage.getItem('cep');
+        }
+        if (localStorage.getItem('referencia')) {
+            document.querySelector('#referencia').value = localStorage.getItem('referencia');
+        }
+        if (localStorage.getItem('complemento')) {
+            document.querySelector('#complemento').value = localStorage.getItem('complemento');
+        }
+        nomeBairro = '';
+
         form1.addEventListener('submit', e => {
             e.preventDefault();
 
@@ -249,17 +275,25 @@ function capturaEventos() {
             complemento = document.querySelector('#complemento').value;
 
             //Validação dos campos
-            if (!rua || !numero || !bairro || !cep) {
+            if (!rua || !numero || !nomeBairro || !cep) {
                 alert('Preencha todos os campos obrigatórios!');
                 return;
             }
+
+            // Salvando os dados no localStorage
+            localStorage.setItem('rua', rua);
+            localStorage.setItem('numero', numero);
+            localStorage.setItem('cep', cep);
+            localStorage.setItem('referencia', referencia);
+            localStorage.setItem('complemento', complemento);
+            localStorage.setItem('bairro', nomeBairro);
 
             //Carrega a próxima página
             carregaPagina('modal-cart-2.html');
         });
 
         //Adiciona o nome e o preco para o bairro selecionado
-        document.querySelector('#bairro').addEventListener('change', function() {
+        document.querySelector('#bairro').addEventListener('change', function () {
             let numeroBairro = this.value;
 
             let bairros = {
@@ -290,7 +324,7 @@ function capturaEventos() {
                 '25': { nome: 'Heliópolis', preco: 8 },
                 '26': { nome: 'Euno Andrade', preco: 8 }
             };
-        
+
             if (bairros[numeroBairro]) {
                 nomeBairro = bairros[numeroBairro].nome;
                 precoBairro = bairros[numeroBairro].preco;
@@ -301,20 +335,30 @@ function capturaEventos() {
     //Verifica se existe o form 2 (PAGINA 2)
     const form2 = document.querySelector('#form-modal-cart-2');
     if (form2) {
+        if (localStorage.getItem('nome')) {
+            document.querySelector('#nome').value = localStorage.getItem('nome');
+        }
+        if (localStorage.getItem('telefone')) {
+            document.querySelector('#telefone').value = localStorage.getItem('telefone');
+        }
+
         form2.addEventListener('submit', e => {
             e.preventDefault();
 
             //Pegando os dados do form
             nome = document.querySelector('#nome').value;
             telefone = document.querySelector('#telefone').value;
-            const pagamento = document.querySelector('#pagamento').value;
-            const troco = document.querySelector('#troco').value;
+            pagamento = document.querySelector('#pagamento').value;
+            troco = document.querySelector('#troco').value;
 
             //Validação dos campos
             if (!nome || !telefone || !pagamento || (pagamento === 'dinheiro' && !troco)) {
                 alert('Preencha todos os campos obrigatórios!');
                 return;
             }
+
+            localStorage.setItem('nome', nome);
+            localStorage.setItem('telefone', telefone);
 
             carregaPagina('modal-cart-3.html');
         });
@@ -327,8 +371,7 @@ function capturaEventos() {
         });
 
         //Adicionar 'precisa de troco?' caso seja em dinheiro
-        const pagamento = document.querySelector('#pagamento');
-        pagamento.addEventListener('change', e => {
+        document.querySelector('#pagamento').addEventListener('change', e => {
             const selected = e.target.value;
             const troco = document.querySelector('#troco-container');
 
@@ -357,14 +400,40 @@ function capturaEventos() {
         //Enviar dados para API do WhatsApp
         const finalizarPedido = document.querySelector('#finalizar-pedido');
         finalizarPedido.addEventListener('click', e => {
-            const cartItems = cart.map(item => `${item.name} (Quantidade: ${item.quantity})`).join(', ');
+            const cartItems = cart.map(item => `
+• *Produto 1:* ${item.name} (Quantidade: ${item.quantity})
+Preço: ${item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`).join('');
 
-            const message = encodeURIComponent(`
-            Nome: ${nome}
-            Telefone: ${telefone}
-            Endereço: ${rua}, ${numero} - ${nomeBairro}, ${cep} - ${referencia} - ${complemento}
-            `);
+            //Pegando data e hora e jogando no formato do WhatsApp
+            const date = new Date();
+            const data = date.toLocaleDateString('pt-BR');
+            const hora = date.toLocaleTimeString('pt-BR');
+
+            const message = encodeURIComponent(`👋 Olá! Estou enviando um pedido pelo site www.kidudu.com.
+
+🗓 Data: ${data} ⏰ Horário: ${hora}
+
+_Tipo de serviço: Delivery_
             
+📋 *Meus Dados:*
+
+*Nome:* ${nome}
+*Telefone:* ${telefone}
+*Endereço:* ${rua}, ${numero} - ${nomeBairro}, ${cep}${referencia ? ', - ' + referencia : ''}${complemento ? ', - ' + complemento : ''}
+*Método de pagamento:* ${pagamento}
+${pagamento === 'dinheiro' ? `• *Precisa de troco?* ${troco}
+` : ''}           
+💰 *Resumo do Pedido*
+
+*Produtos:* ${subtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+*Entrega:* ${precoBairro.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+*Total a pagar:* ${totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
+
+📝 *Detalhes do Pedido:*
+${cartItems}
+
+🚀 Aguarde um momento enquanto preparamos seu pedido. Entraremos em contato em breve para confirmar os detalhes e o prazo de entrega.`);
+
             const phone = '8192878433';
             //window.open(`https://wa.me/${phone}?text=${message} Endereço: qualquer`, '_blank');
             window.open(`https://api.whatsapp.com/send?phone=${phone}&text=${message}`, '_blank');
@@ -399,8 +468,44 @@ function carregaResultado(response) {
     capturaEventos();
 }
 
-//Ativado ao clicar no botão do carrinho
+function showAlert(msg, description) {
+    
+    //Posicionando o alerta
+    alert.style.top = `${header.offsetHeight}px`;
+    alert.style.left = `calc(50% - (${alert.offsetWidth}px / 2))`;
+
+    //Mensagem do alerta
+    alertMessage.innerHTML = msg;
+    alertDescription.innerHTML = description;
+
+    //Mostrando o alerta
+    alert.classList.remove('opacity-0');
+    alert.style.transform = 'translateY(30px)';
+    alert.classList.add('opacity-100');
+
+    //Fechar alerta automaticamente após 5 segundos
+    const tempo = setTimeout(() => {
+        alert.classList.remove('opacity-100');
+        alert.style.transform = 'translateY(-30px)';
+        alert.classList.add('opacity-0');
+    }, 5000);
+
+    //Fechar alerta ao clicar no botão de fechar
+    alertClose.addEventListener('click', () => {
+        alert.classList.remove('opacity-100');
+        alert.style.transform = 'translateY(-30px)';
+        alert.classList.add('opacity-0');
+        clearTimeout(tempo)
+    });
+}
+
+//Função que é ativada ao clicar no carrinho
 function openModalCart() {
+    if (cart.length <= 0) {
+        showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio');
+        return;
+    };
+
     modalCart.classList.remove('hidden');
     modalCart.classList.add('flex');
     carregaPagina('modal-cart-1.html');
@@ -482,13 +587,17 @@ function addItem() {
         eventRemoveCartItem();
     }
 }
+
+let subtotalPrice;
+let totalPrice;
+
 //Função para atualizar o modal do carrinho
 function updateCartModal() {
     const cartItemsContainer = document.querySelector('#cartItemsContainer');
     const cartSubtotalValue = document.querySelector('#cartSubtotalValue');
     const cartTotalValue = document.querySelector('#cartTotalValue');
 
-    let SubtotalPrice = 0;
+    subtotalPrice = 0;
     cartItemsContainer.innerHTML = '';
 
     cart.forEach(item => {
@@ -506,16 +615,16 @@ function updateCartModal() {
             </div>
         `;
 
-        SubtotalPrice += item.price;
+        subtotalPrice += item.price;
 
         cartItemsContainer.appendChild(itemElement);
     })
 
-    let totalPrice = SubtotalPrice + precoBairro;
+    totalPrice = subtotalPrice + precoBairro;
 
 
     //Inserindo os valores no modal cart
-    cartSubtotalValue.innerHTML = SubtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    cartSubtotalValue.innerHTML = subtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     cartTotalValue.innerHTML = `TOTAL: <span class="font-bold">${totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>`;
 }
 
