@@ -612,7 +612,7 @@ function updateCartModal() {
     const cartSubtotalValue = document.querySelector('#cartSubtotalValue');
     const cartTotalValue = document.querySelector('#cartTotalValue');
 
-    let SubtotalPrice = 0;
+    subtotalPrice = 0;
     cartItemsContainer.innerHTML = '';
 
     cart.forEach(item => {
@@ -630,16 +630,16 @@ function updateCartModal() {
             </div>
         `;
 
-        SubtotalPrice += item.price;
+        subtotalPrice += item.price;
 
         cartItemsContainer.appendChild(itemElement);
     })
 
-    let totalPrice = SubtotalPrice + precoBairro;
+    totalPrice = subtotalPrice + precoBairro;
 
 
     //Inserindo os valores no modal cart
-    cartSubtotalValue.innerHTML = SubtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    cartSubtotalValue.innerHTML = subtotalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     cartTotalValue.innerHTML = `TOTAL: <span class="font-bold">${totalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span>`;
 }
 
