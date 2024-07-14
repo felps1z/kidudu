@@ -284,11 +284,20 @@ function capturaEventos() {
             referencia = document.querySelector('#referencia').value;
             complemento = document.querySelector('#complemento').value;
 
-            //Validação dos campos
-            if (!rua || !numero || !nomeBairro || !cep) {
-                showAlert('Preencha todos os campos', 'Ainda há campos vazios', sucess = false);
+
+            function setFieldBorder(selector, condition) {
+                document.querySelector(selector).style.border = condition ? '1px solid red' : '1px solid #ccc';
+            }
+
+            if (!rua || !numero || !cep || !nomeBairro) {
+                setFieldBorder('#rua', !rua);
+                setFieldBorder('#numero', !numero);
+                setFieldBorder('#cep', !cep);
+                setFieldBorder('#bairro', !nomeBairro);
+                showAlert('Preencha todos os campos', 'Ainda há campos vazios', false);
                 return;
             }
+
 
             // Salvando os dados no localStorage
             localStorage.setItem('rua', rua);
@@ -362,8 +371,16 @@ function capturaEventos() {
             troco = document.querySelector('#troco').value;
 
             //Validação dos campos
+            function setFieldBorder(selector, condition) {
+                document.querySelector(selector).style.border = condition ? '1px solid red' : '1px solid #ccc';
+            }
+
             if (!nome || !telefone || !pagamento || (pagamento === 'dinheiro' && !troco)) {
-                showAlert('Preencha todos os campos', 'Ainda há campos vazios', sucess = false);
+                setFieldBorder('#nome', !nome);
+                setFieldBorder('#telefone', !telefone);
+                setFieldBorder('#pagamento', !pagamento);
+                setFieldBorder('#troco', pagamento === 'dinheiro' && !troco);
+                showAlert('Preencha todos os campos', 'Ainda há campos vazios', false);
                 return;
             }
 
@@ -479,13 +496,13 @@ function carregaResultado(response) {
 function showAlert(msg, description, sucess) {
     if (sucess) {
         alertIcon.innerHTML = '<div class="w-6 h-6 flex justify-center items-center"><i class="fa-solid fa-bag-shopping text-green-400" style="font-size: 16px"></i></div>';
-    } else {   
+    } else {
         alertIcon.innerHTML = '<div class="w-6 h-6 flex justify-center items-center"><i class="fa-solid fa-exclamation-circle text-red-400" style="font-size: 16px"></i></div>';
-    }    
+    }
 
     //Mostrando o alerta
     DOMUtils.showElement(alert);
-    
+
     //Posicionando o alerta
     alert.style.top = `${header.offsetHeight}px`;
     alert.style.left = `calc(50% - (${alert.offsetWidth}px / 2))`;
@@ -508,7 +525,7 @@ function showAlert(msg, description, sucess) {
         alert.style.transform = 'translateY(-30px)';
         alert.classList.add('opacity-0');
     }, 5000);
-    
+
     //Fechar alerta ao clicar no botão de fechar
     alertClose.addEventListener('click', () => {
         //Escondendo o alerta
