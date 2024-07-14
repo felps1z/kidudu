@@ -446,10 +446,6 @@ video {
   display: none;
 }
 
-* {
-  font-weight: 500;
-}
-
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -592,14 +588,6 @@ video {
   }
 }
 
-.description{
-  color: #5c5c5c;
-  text-align: center;
-  font-size: 10px;
-  line-height: 1.25;
-  font-weight: 500;
-}
-
 .fixed {
   position: fixed;
 }
@@ -630,6 +618,10 @@ video {
 
 .-right-8 {
   right: -2rem;
+}
+
+.-top-12 {
+  top: -3rem;
 }
 
 .-top-2 {
@@ -674,6 +666,14 @@ video {
 
 .top-2 {
   top: 0.5rem;
+}
+
+.-top-8 {
+  top: -2rem;
+}
+
+.-top-10 {
+  top: -2.5rem;
 }
 
 .-z-10 {
@@ -739,10 +739,6 @@ video {
 
 .mb-4 {
   margin-bottom: 1rem;
-}
-
-.mb-5 {
-  margin-bottom: 1.25rem;
 }
 
 .mb-6 {
@@ -861,8 +857,8 @@ video {
   width: 91.666667%;
 }
 
-.w-16 {
-  width: 4rem;
+.w-14 {
+  width: 3.5rem;
 }
 
 .w-2 {
@@ -913,10 +909,6 @@ video {
   width: 100vw;
 }
 
-.w-14 {
-  width: 3.5rem;
-}
-
 .max-w-56 {
   max-width: 14rem;
 }
@@ -939,10 +931,6 @@ video {
 
 .max-w-screen-xl {
   max-width: 1280px;
-}
-
-.max-w-sm {
-  max-width: 24rem;
 }
 
 .flex-1 {
@@ -1281,6 +1269,10 @@ video {
   font-size: 10px;
 }
 
+.text-\[12px\] {
+  font-size: 12px;
+}
+
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
@@ -1295,6 +1287,10 @@ video {
   font-weight: 700;
 }
 
+.font-medium {
+  font-weight: 500;
+}
+
 .font-normal {
   font-weight: 400;
 }
@@ -1305,6 +1301,10 @@ video {
 
 .uppercase {
   text-transform: uppercase;
+}
+
+.leading-5 {
+  line-height: 1.25rem;
 }
 
 .leading-tight {
@@ -1539,6 +1539,18 @@ video {
     right: auto;
   }
 
+  .md\:-top-6 {
+    top: -1.5rem;
+  }
+
+  .md\:-top-8 {
+    top: -2rem;
+  }
+
+  .md\:-top-10 {
+    top: -2.5rem;
+  }
+
   .md\:order-1 {
     order: 1;
   }
@@ -1597,6 +1609,10 @@ video {
     gap: 2.5rem;
   }
 
+  .md\:gap-5 {
+    gap: 1.25rem;
+  }
+
   .md\:self-start {
     align-self: flex-start;
   }
@@ -1624,14 +1640,41 @@ video {
     padding-bottom: 0.5rem;
   }
 
-  .md\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
+  .md\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+
+  .md\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
   }
 
   .md\:text-base {
     font-size: 1rem;
     line-height: 1.5rem;
+  }
+
+  .md\:text-sm {
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+
+  .md\:text-\[12px\] {
+    font-size: 12px;
+  }
+
+  .md\:text-\[11px\] {
+    font-size: 11px;
+  }
+
+  .md\:text-\[13px\] {
+    font-size: 13px;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
   }
 }
 

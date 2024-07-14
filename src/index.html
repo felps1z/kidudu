@@ -34,11 +34,11 @@
             </button>
         </div>
         <nav class="flex flex-col gap-6 mb-6">
-            <a href="#inicio" onclick="closeMenu()" class="text-sm">Início</a>
-            <a href="#produtos" onclick="closeMenu()" class="text-sm">Nossos produtos</a>
-            <a href="#quemsomos" onclick="closeMenu()" class="text-sm">Quem somos</a>
-            <a href="#loc" onclick="closeMenu()" class="text-sm">Localização</a>
-            <a href="#contato" onclick="closeMenu()" class="text-sm">Contato</a>
+            <a href="#inicio" onclick="closeMenu()">Início</a>
+            <a href="#produtos" onclick="closeMenu()">Nossos produtos</a>
+            <a href="#quemsomos" onclick="closeMenu()">Quem somos</a>
+            <a href="#loc" onclick="closeMenu()">Localização</a>
+            <a href="#contato" onclick="closeMenu()">Contato</a>
         </nav>
     </div>
     <!-- FIM NAVBAR MOBILE -->
@@ -75,11 +75,11 @@
                     <img src="./assets/logo.png" alt="Logo da Kidudu em branco" class="w-32 max-w-56">
                 </a>
                 <nav class="hidden lg:flex">
-                    <a href="#inicio" class="text-white hover:bg-white/10 py-2 px-6 rounded-md">Início</a>
-                    <a href="#produtos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md">Nossos produtos</a>
-                    <a href="#quemsomos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md">Quem somos</a>
-                    <a href="#loc" class="text-white hover:bg-white/10 py-2 px-6 rounded-md">Localização</a>
-                    <a href="#contato" class="text-white hover:bg-white/10 py-2 px-6 rounded-md">Contato</a>
+                    <a href="#inicio" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Início</a>
+                    <a href="#produtos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Nossos produtos</a>
+                    <a href="#quemsomos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Quem somos</a>
+                    <a href="#loc" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Localização</a>
+                    <a href="#contato" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Contato</a>
                 </nav>
             </div>
             <!-- FIM LOGO E NAVBAR PC -->
@@ -88,7 +88,7 @@
             <div class="flex gap-6 items-center">
                 <button class="relative" title="Carrinho" onclick="openModalCart()">
                     <i class="fa fa-cart-shopping text-white" style="font-size: 24px;"></i>
-                    <div class="flex justify-center items-center text-white rounded-full text-sm absolute -right-2 -top-2 bg-yellow-color h-4 w-4"
+                    <div class="flex justify-center items-center text-white rounded-full  absolute -right-2 -top-2 bg-yellow-color h-4 w-4"
                         id="items"></div>
                 </button>
 
@@ -148,7 +148,7 @@
                                         </div>
 
                                         <div>
-                                            <p class="whitespace-nowrap text-sm">Avaliação dos
+                                            <p class="whitespace-nowrap text-[12px] md:text-sm">Avaliação dos
                                                 clientes</p>
 
                                             <div class="flex items-center gap-[2px]">
@@ -173,7 +173,7 @@
                                     feitos com os melhores ingredientes
                                 </h2>
 
-                                <p class="leading-tight text-gray-text my-2 mb-6 max-w-80 lg:max-w-md text-sm">Estamos
+                                <p class="leading-tight text-gray-text my-2 mb-6 max-w-80 lg:max-w-md ">Estamos
                                     abertos <span class="font-bold">todos
                                         os dias</span>, das <span class="font-bold">10:00</span> às <span
                                         class="font-bold">16:00</span>. Faça seu pedido
@@ -181,7 +181,7 @@
 
                                 <div class="w-72">
                                     <a href="#produtos"
-                                        class="py-3 px-11 bg-red-color rounded-md text-white text-sm">Peça
+                                        class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
                                         já</a>
                                 </div>
                             </div>
@@ -221,7 +221,7 @@
 
                                 <div class="w-72 flex justify-center">
                                     <a href="#produtos"
-                                        class="py-3 px-11 bg-red-color rounded-md text-white text-sm">Peça
+                                        class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
                                         já</a>
                                 </div>
                             </div>
@@ -253,10 +253,10 @@
                 <img src="assets/iconsQualities/noun-care-6933825.svg" alt="Ícone de um coração" class="w-14">
 
                 <div>
-                    <h3 class="text-center font-semibold mb-1 text-sm">
+                    <h3 class="text-center font-semibold mb-1 text-sm md:text-base">
                         Artesanal
                     </h3>
-                    <p class="description">
+                    <p class="text-center leading-5 text-gray-text text-[10px] md:text-[13px]">
                         Produção artesanal para garantir o sabor e a qualidade excepcionais em cada dudu.
                     </p>
                 </div>
@@ -267,10 +267,10 @@
                 <img src="assets/iconsQualities/noun-fruit-6389284.svg" alt="Ícone de uma cesta de frutas" class="w-14">
 
                 <div>
-                    <h3 class="text-center font-semibold mb-1 text-sm">
+                    <h3 class="text-center font-semibold mb-1 text-sm md:text-base">
                         Ingredientes selecionados
                     </h3>
-                    <p class="description">
+                    <p class="text-center leading-5 text-gray-text text-[10px] md:text-[13px]">
                         Ingredientes escolhidos a dedo para oferecer o melhor sabor e frescor.
                     </p>
                 </div>
@@ -281,10 +281,10 @@
                     class="w-14">
 
                 <div>
-                    <h3 class="text-center font-semibold mb-1 text-sm">
+                    <h3 class="text-center font-semibold mb-1 text-sm md:text-base">
                         Entrega rápida
                     </h3>
-                    <p class="description">
+                    <p class="text-center leading-5 text-gray-text text-[10px] md:text-[13px]">
                         Dudus entregues rapidamente, sempre fresquinhos e prontos para consumir.
                     </p>
                 </div>
@@ -295,10 +295,10 @@
                     alt="Ícone de um fone de ouvido de atendente" class="w-14">
 
                 <div>
-                    <h3 class="text-center font-semibold mb-1 text-sm">
+                    <h3 class="text-center font-semibold mb-1 text-sm md:text-base">
                         Ótimo atendimento
                     </h3>
-                    <p class="description">
+                    <p class="text-center leading-5 text-gray-text text-[10px] md:text-[13px]">
                         Atendimento ágil e eficiente para sua total satisfação.
                     </p>
                 </div>
@@ -312,7 +312,7 @@
 
             <!-- TITULO -->
             <div class="flex justify-between mb-6">
-                <h2 class="font-semibold text-2xl">Sabores Tradicionais</h2>
+                <h2 class="font-semibold text-2xl md:text-3xl">Sabores Tradicionais</h2>
                 <div class="flex justify-center items-center rounded-md px-2 text-white text-[10px] md:text-base" id="open"></div>
             </div>
             <!-- FIM TITULO -->
@@ -483,7 +483,7 @@
             </div>
 
             <!-- TITULO 2 -->
-            <h2 class="font-semibold text-2xl my-8 pt-5">Sabores Premium</h2>
+            <h2 class="font-semibold text-2xl md:text-3xl my-8 pt-5">Sabores Premium</h2>
             <!-- FIM TITULO 2 -->
 
             <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-6">
@@ -565,19 +565,19 @@
 
         <!-- MODAL -->
         <div class="fixed top-0 left-0 w-full h-full z-40 bg-black/50 items-center justify-center hidden" id="modal">
-            <div class="bg-white flex flex-col md:flex-row gap-3 rounded-md p-5 w-[90%] max-w-screen-md">
+            <div class="bg-white flex flex-col md:flex-row gap-3 md:gap-5 rounded-md p-5 w-[90%] max-w-screen-md">
                 <div class="md:flex-1 h-48 md:h-80 overflow-hidden rounded-md relative">
-                    <button class="absolute top-2 right-2 md:right-auto md:left-2" onclick="closeModal()"><i
+                    <button class="absolute top-2 right-2 md:hidden" onclick="closeModal()" title="Fechar"><i
                             class="fa fa-xmark text-white" style="font-size: 32px"></i></button>
                     <img class="w-full min-h-full" id="modal-img">
                 </div>
                 <div class="flex-1 flex flex-col justify-between">
                     <div>
                         <div>
-                            <h2 class="text-2xl font-bold" id="modal-title"></h2>
+                            <h2 class="text-2xl md:text-3xl font-bold" id="modal-title"></h2>
                             <div class="h-1 w-1/4 bg-red-color rounded-full mt-1"></div>
                         </div>
-                        <p id="modal-description" class="text-gray-text mt-2 mb-4 text-sm md:text-base"></p>
+                        <p id="modal-description" class="text-gray-text mt-2 mb-4 text-sm md:text-base font-medium"></p>
                     </div>
                     <div>
                         <hr>
@@ -591,7 +591,7 @@
                                     class="shadow-sm border border-gray-border py-1 md:py-2 px-3 md:px-4 rounded-md hover:bg-gray-100"
                                     title="Aumentar quantidade">+</button>
                             </div>
-                            <button class="bg-red-color rounded-full text-white py-3 px-4 whitespace-nowrap text-sm" onclick="addItem()"
+                            <button class="bg-red-color rounded-full text-white py-3 px-4 whitespace-nowrap text-sm md:text-base" onclick="addItem()"
                                 id="addToCartBtn">Adicionar
                                 <span class="font-bold" id="modal-price">R$ 2,50</span></button>
                         </div>
@@ -606,7 +606,7 @@
             id="modal-cart">
 
             <!-- RESULTADO DA FETCH API -->
-            <div class="bg-white p-5 md:p-10 w-full h-full md:h-[546px] max-w-screen-md md:rounded-2xl result overflow-y-auto group-">
+            <div class="bg-white p-5 md:p-10 w-full h-full md:h-[546px] max-w-screen-md md:rounded-2xl result overflow-y-auto">
             </div>
             <!-- FIM RESULTADO DA FETCH API -->
 
@@ -621,7 +621,7 @@
             <h3 class="text-center text-3xl lg:text-5xl font-bold">Nosso principal objetivo</h3>
             <!-- FIM TITULO -->
 
-            <div class="lg:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:gap-0 gap-10">
+            <div class="lg:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:gap-0 gap-5">
 
                 <!-- IMAGEM -->
                 <div class="bg-red-color w-full max-w-md mx-auto rounded-xl flex justify-center items-center relative">
@@ -632,7 +632,7 @@
 
                 <!-- TEXTO -->
                 <div class="max-w-md mx-auto">
-                    <p class="mb-10 text-sm">Somos um <span class="text-red-color">casal dedicado</span> ao mundo das sobremesas
+                    <p class="mb-10 ">Somos um <span class="text-red-color">casal dedicado</span> ao mundo das sobremesas
                         e, através do Dudu Gourmet, temos a
                         missão de levar sabor e alegria aos nossos clientes.
                         <br>
@@ -651,7 +651,7 @@
 
                     <!-- BOTÂO -->
                     <a href="https://www.instagram.com/kidudu_oficial/" target="_blank"
-                        class="text-white bg-red-color border-2 border-red-color hover:bg-white hover:text-red-color duration-200 py-3 px-6 rounded-full text-sm">
+                        class="text-white bg-red-color border-2 border-red-color hover:bg-white hover:text-red-color duration-200 py-3 px-6 rounded-full ">
                         <span>Acompanhe-nos</span>
                         <i class="fa fa-arrow-up-right-from-square ml-4"></i>
                     </a>
@@ -694,16 +694,16 @@
                 <!-- FIM IMG -->
 
                 <!-- TEXTO -->
-                <div class="flex-1 flex items-center justify-center flex-col text-center md:order-1">
-                    <h2 class="font-bold text-2xl mb-5">Siga-nos no instagram</h2>
+                <div class="flex-1 flex items-center justify-center flex-col gap-4 text-center md:order-1">
+                    <h2 class="font-bold text-2xl">Siga-nos no instagram</h2>
 
-                    <p class="text-center mb-5 text-[#5C5C5C] font-sans max-w-sm text-sm">Visite nossa página e saiba das
+                    <p class="text-center text-[#5C5C5C] font-sans max-w-md ">Visite nossa página e saiba das
                         nossas saborosas novidades em primeira mão!</p>
 
                     <a href="https://www.instagram.com/kidudu_oficial/" target="_blank">
                         <div
                             class="flex justify-center items-center rounded-full py-4 px-8 border border-gray-border hover:scale-105 duration-200 shadow-sm">
-                            <p class="mr-3 font-semibold text-sm">Visite agora</p>
+                            <p class="mr-3 font-semibold ">Visite agora</p>
                             <i class="fa fa-arrow-up-right-from-square"></i>
                         </div>
                     </a>
@@ -767,11 +767,11 @@
                         </div>
 
                         <ul class="hidden mt-4" id="accordion-menu">
-                            <li><a href="#inicio" class="hover:underline mb-2 text-sm">Início</a></li>
-                            <li><a href="#produtos" class="hover:underline mb-2 text-sm">Nossos produtos</a></li>
-                            <li><a href="#quemsomos" class="hover:underline mb-2 text-sm">Quem somos</a></li>
-                            <li><a href="#loc" class="hover:underline mb-2 text-sm">Localização</a></li>
-                            <li><a href="#contato" class="hover:underline text-sm">Contato</a></li>
+                            <li><a href="#inicio" class="hover:underline mb-2 ">Início</a></li>
+                            <li><a href="#produtos" class="hover:underline mb-2 ">Nossos produtos</a></li>
+                            <li><a href="#quemsomos" class="hover:underline mb-2 ">Quem somos</a></li>
+                            <li><a href="#loc" class="hover:underline mb-2 ">Localização</a></li>
+                            <li><a href="#contato" class="hover:underline ">Contato</a></li>
                         </ul>
                     </div>
 
@@ -787,8 +787,8 @@
                         </div>
 
                         <div class="hidden mt-4" id="accordion-contact">
-                            <p class="text-sm">(81) 9 9287-8433</p>
-                            <p class="text-sm">contato@kidudu.com</p>
+                            <p>(81) 9 9287-8433</p>
+                            <p>contato@kidudu.com</p>
                         </div>
 
                     </div>
@@ -797,9 +797,9 @@
                 <div class="flex flex-col items-center">
                     <div>
                         <img src="./assets/logo-preto.png" alt="Logo da Kidudu em preto" class="w-40 mx-auto">
-                        <p class="text-center mt-2 text-sm">Quem prova não esquece!</p>
+                        <p class="text-center mt-2 ">Quem prova não esquece!</p>
                     </div>
-                    <p class="text-center mt-4 text-sm">© Kidudu 2024</p>
+                    <p class="text-center mt-4 ">© Kidudu 2024</p>
                 </div>
             </div>
             <!-- FIM FOOTER MOBILE -->
