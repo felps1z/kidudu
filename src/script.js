@@ -286,7 +286,7 @@ function capturaEventos() {
 
             //Validação dos campos
             if (!rua || !numero || !nomeBairro || !cep) {
-                showAlert('Preencha todos os campos', 'Os campos de rua, número, bairro e CEP estão vazios!');
+                showAlert('Preencha todos os campos', 'Ainda há campos vazios', sucess = false);
                 return;
             }
 
@@ -363,7 +363,7 @@ function capturaEventos() {
 
             //Validação dos campos
             if (!nome || !telefone || !pagamento || (pagamento === 'dinheiro' && !troco)) {
-                alert('Preencha todos os campos obrigatórios!');
+                showAlert('Preencha todos os campos', 'Ainda há campos vazios', sucess = false);
                 return;
             }
 
@@ -476,7 +476,13 @@ function carregaResultado(response) {
     capturaEventos();
 }
 
-function showAlert(msg, description) {
+function showAlert(msg, description, sucess) {
+    if (sucess) {
+        alertIcon.innerHTML = '<div class="w-6 h-6 flex justify-center items-center"><i class="fa-solid fa-bag-shopping text-green-400" style="font-size: 16px"></i></div>';
+    } else {   
+        alertIcon.innerHTML = '<div class="w-6 h-6 flex justify-center items-center"><i class="fa-solid fa-exclamation-circle text-red-400" style="font-size: 16px"></i></div>';
+    }    
+
     //Mostrando o alerta
     DOMUtils.showElement(alert);
     
@@ -520,7 +526,7 @@ function showAlert(msg, description) {
 //Função que é ativada ao clicar no carrinho
 function openModalCart() {
     if (cart.length <= 0) {
-        showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio');
+        showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio', sucess = false);
         return;
     };
 
@@ -566,6 +572,8 @@ function addItem() {
     showCountItems(); // atualizar contador
 
     const name = document.querySelector('#modal-title').textContent;
+
+    showAlert('Produto adicionado', 'Finalize no carrinho', sucess = true);
 
     // Preço modificado
     let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
