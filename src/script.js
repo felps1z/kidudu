@@ -1,14 +1,3 @@
-//Menu Navbar - Mobile
-const menuMobile = document.querySelector('#menu-mobile');
-let cart = [];
-
-//Variáveis do alerta
-const alert = document.querySelector('#alert');
-const alertMessage = document.querySelector('#alert-message');
-const alertClose = document.querySelector('#alert-close');
-const alertDescription = document.querySelector('#alert-description');
-const header = document.querySelector('header');
-
 const DOMUtils = {
     showElement: (element) => {
         element.classList.remove('hidden');
@@ -22,6 +11,17 @@ const DOMUtils = {
         element.classList.toggle('hidden');
     }
 };
+
+//Menu Navbar - Mobile
+const menuMobile = document.querySelector('#menu-mobile');
+let cart = [];
+
+//Variáveis do alerta
+const alert = document.querySelector('#alert');
+const alertMessage = document.querySelector('#alert-message');
+const alertClose = document.querySelector('#alert-close');
+const alertDescription = document.querySelector('#alert-description');
+const header = document.querySelector('header');
 
 function openMenu() {
     DOMUtils.showElement(menuMobile);
