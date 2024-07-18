@@ -44,7 +44,8 @@
     <!-- FIM NAVBAR MOBILE -->
 
     <!-- ALERTA -->
-    <div class="hidden flex-col gap-2 w-60 sm:w-72 text-[10px] sm:text-xs z-50 shadow-md fixed opacity-0 duration-300" id="alert">
+    <div class="hidden flex-col gap-2 w-60 sm:w-72 text-[10px] sm:text-xs z-50 shadow-md fixed opacity-0 duration-300"
+        id="alert">
         <div
             class="error-alert cursor-default flex items-center justify-between w-full h-12 sm:h-14 rounded-lg bg-white px-[10px]">
             <div class="flex gap-2">
@@ -54,7 +55,8 @@
                     <p class="text-gray-500" id="alert-description"></p>
                 </div>
             </div>
-            <button class="text-gray-600 hover:bg-white/10 p-1 rounded-md transition-colors ease-linear" id="alert-close">
+            <button class="text-gray-600 hover:bg-white/10 p-1 rounded-md transition-colors ease-linear"
+                id="alert-close">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"></path>
@@ -76,8 +78,10 @@
                 </a>
                 <nav class="hidden lg:flex">
                     <a href="#inicio" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Início</a>
-                    <a href="#produtos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Nossos produtos</a>
-                    <a href="#quemsomos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Quem somos</a>
+                    <a href="#produtos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Nossos
+                        produtos</a>
+                    <a href="#quemsomos" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Quem
+                        somos</a>
                     <a href="#loc" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Localização</a>
                     <a href="#contato" class="text-white hover:bg-white/10 py-2 px-6 rounded-md font-medium">Contato</a>
                 </nav>
@@ -180,8 +184,7 @@
                                     agora e venha se deliciar conosco!</p>
 
                                 <div class="w-72">
-                                    <a href="#produtos"
-                                        class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
+                                    <a href="#produtos" class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
                                         já</a>
                                 </div>
                             </div>
@@ -220,8 +223,7 @@
                                         class="block text-red-color text-2xl">de apenas</span>R$ 2,50</h2>
 
                                 <div class="w-72 flex justify-center">
-                                    <a href="#produtos"
-                                        class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
+                                    <a href="#produtos" class="py-3 px-11 bg-red-color rounded-md text-white ">Peça
                                         já</a>
                                 </div>
                             </div>
@@ -313,7 +315,8 @@
             <!-- TITULO -->
             <div class="flex justify-between mb-6">
                 <h2 class="font-semibold text-2xl md:text-3xl">Sabores Tradicionais</h2>
-                <div class="flex justify-center items-center rounded-md px-2 text-white text-[10px] md:text-base" id="open"></div>
+                <div class="flex justify-center items-center rounded-md px-2 text-white text-[10px] md:text-base"
+                    id="open"></div>
             </div>
             <!-- FIM TITULO -->
 
@@ -557,9 +560,34 @@
                 </div>
                 <!-- FIM PRODUTO -->
 
+                <!-- PRODUTO -->
+                <div class="border border-gray-300 shadow-sm group duration-300 rounded-lg flex max-h-40 overflow-hidden cursor-pointer produto"
+                    data-product-id="11">
+                    <div class="flex-1 overflow-hidden">
+                        <img src="assets/imgProducts/" alt="Imagem do kidudu de Oreo"
+                            class="object-cover group-hover:scale-105 duration-300 min-h-full">
+                    </div>
+                    <div class="flex-1 flex flex-col justify-between p-6">
+                        <div>
+                            <h3 class="font-semibold">Oreo</h3>
+                            <div class="h-1 rounded-full w-10 bg-red-color"></div>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-xl font-bold price">R$ 5,00</span>
+                            <button title="Adicionar ao carrinho" class="add-to-cart-btn" data-name="Oreo"
+                                data-price="5.00"><i
+                                    class="fa fa-cart-plus text-red-color hover:brightness-75 duration-300"
+                                    style="font-size: 20px"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <!-- FIM PRODUTO -->
+
+
+
+
+
             </div>
-
-
         </section>
         <!-- FIM PRODUTOS -->
 
@@ -591,8 +619,9 @@
                                     class="shadow-sm border border-gray-border py-1 md:py-2 px-3 md:px-4 rounded-md hover:bg-gray-100"
                                     title="Aumentar quantidade">+</button>
                             </div>
-                            <button class="bg-red-color rounded-full text-white py-3 px-4 whitespace-nowrap text-sm md:text-base" onclick="addItem()"
-                                id="addToCartBtn">Adicionar
+                            <button
+                                class="bg-red-color rounded-full text-white py-3 px-4 whitespace-nowrap text-sm md:text-base"
+                                onclick="addItem()" id="addToCartBtn">Adicionar
                                 <span class="font-bold" id="modal-price">R$ 2,50</span></button>
                         </div>
                     </div>
@@ -606,7 +635,8 @@
             id="modal-cart">
 
             <!-- RESULTADO DA FETCH API -->
-            <div class="bg-white p-5 md:p-10 w-full h-full md:h-[546px] max-w-screen-md md:rounded-2xl result overflow-y-auto">
+            <div
+                class="bg-white p-5 md:p-10 w-full h-full md:h-[546px] max-w-screen-md md:rounded-2xl result overflow-y-auto">
             </div>
             <!-- FIM RESULTADO DA FETCH API -->
 
@@ -624,7 +654,8 @@
             <div class="lg:mt-20 mt-10 grid grid-cols-1 sm:grid-cols-2 lg:gap-0 gap-5">
 
                 <!-- IMAGEM -->
-                <div class="bg-red-color w-full max-w-md mx-auto min-h-[448px] rounded-xl flex justify-center items-center relative">
+                <div
+                    class="bg-red-color w-full max-w-md mx-auto min-h-[448px] rounded-xl flex justify-center items-center relative">
                     <img src="assets/vector.png" alt="" class="absolute -top-4 -right-4">
                     <img src="assets/frase.png" alt="Imagem com a frase 'Hum Ki dudu' em branco" class="w-44">
                 </div>
@@ -632,7 +663,8 @@
 
                 <!-- TEXTO -->
                 <div class="max-w-md mx-auto">
-                    <p class="mb-10 ">Somos um <span class="text-red-color">casal dedicado</span> ao mundo das sobremesas
+                    <p class="mb-10 ">Somos um <span class="text-red-color">casal dedicado</span> ao mundo das
+                        sobremesas
                         e, através do Dudu Gourmet, temos a
                         missão de levar sabor e alegria aos nossos clientes.
                         <br>

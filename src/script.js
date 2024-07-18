@@ -173,6 +173,7 @@ products.forEach(product => {
             case '8': description = 'Nosso kidudu Delícia de Abacaxi é uma explosão de sabor tropical. Feito com pedaços de abacaxi e uma cremosidade irresistível, é perfeito para quem busca um sabor premium e refrescante.'; break;
             case '9': description = 'Se você é fã de sobremesas clássicas, vai adorar o kidudu de Pudim. Com um sabor suave e aveludado, ele é uma verdadeira delícia em forma de kidudu.'; break;
             case '10': description = 'A combinação perfeita de queijo com goiabada agora em versão kidudu. O sabor Romeu e Julieta é uma opção sofisticada e deliciosa para quem busca algo diferente e saboroso.'; break;
+            case '11': description = 'O kidudu Oreo é uma explosão de sabor. Feito com pedaços do clássico biscoito Oreo e uma cremosidade irresistível, é perfeito para quem busca um sabor premium e delicioso.'; break;
         }
 
         // Exibindo a imagem, a descrição e o preço no modal
