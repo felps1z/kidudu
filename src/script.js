@@ -663,7 +663,7 @@ function updateCartModal() {
                 <div>    
                     <p class="text-red-color text-xl font-semibold">${item.name}</p>
                     <p class="text-sm">(Quantidade: ${item.quantity})</p>
-                    <p class="text-sm">R$ ${item.price.toFixed(2)}</p>
+                    <p class="text-sm">${item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</p>
                 </div>
                 
                 <button class="remove-from-cart-btn text-gray-text font-medium" data-name="${item.name}">Remover</button>
