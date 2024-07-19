@@ -91,7 +91,7 @@ if (footerMobile) {
 function verificaHora() {
     const date = new Date();
     const hour = date.getHours();
-    return hour <= 10 && hour >= 16;
+    return hour >= 10 && hour <= 16;
 }
 
 if (verificaHora()) {
