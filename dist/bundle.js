@@ -87,13 +87,13 @@ function openContactAccordion() {
 function verificaHora() {
   var date = new Date();
   var hour = date.getHours();
-  return hour >= 10 && hour <= 18;
+  return hour >= 10 && hour <= 16;
 }
 if (verificaHora()) {
   document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Aberto agora';
   document.querySelector('#open').classList.add('bg-green-500');
 } else {
-  document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Abre às 10:00';
+  document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-2"></i> Abre às 10h';
   document.querySelector('#open').classList.add('bg-red-500');
 }
 
