@@ -95,10 +95,10 @@ function verificaHora() {
 }
 
 if (verificaHora()) {
-    document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4 mr-1"><div class="bg-white h-2 w-2 rounded-full"></div></div>Aberto<span class="hidden sm:block"> agora<span>';
+    document.querySelector('#open').innerHTML = '<div class="border-2 border-white rounded-full flex justify-center items-center h-4 w-4"><div class="bg-white h-2 w-2 rounded-full"></div></div>Aberto<span class="hidden sm:block">agora<span>';
     document.querySelector('#open').classList.add('bg-green-500');
 } else {
-    document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock mr-1"></i>Abre<span class="hidden sm:block"> às</span> 10h';
+    document.querySelector('#open').innerHTML = '<i class="fa-regular fa-clock"></i>Abre<span class="hidden sm:block"> às</span> 10h';
     document.querySelector('#open').classList.add('bg-red-500');
 }
 
