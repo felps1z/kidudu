@@ -29,16 +29,16 @@
     <!-- NAVBAR MOBILE -->
     <div id="menu-mobile" class="hidden flex-col fixed bg-white px-5 right-0 left-0 top-0 z-40 shadow-lg">
         <div class="flex justify-center items-center my-6">
-            <button onclick="closeMenu()">
+            <button class="closeMenu">
                 <i class="fa fa-xmark text-red-500" style="font-size: 32px"></i>
             </button>
         </div>
         <nav class="flex flex-col gap-6 mb-6">
-            <a href="#inicio" onclick="closeMenu()">Início</a>
-            <a href="#produtos" onclick="closeMenu()">Nossos produtos</a>
-            <a href="#quemsomos" onclick="closeMenu()">Quem somos</a>
-            <a href="#loc" onclick="closeMenu()">Localização</a>
-            <a href="#contato" onclick="closeMenu()">Contato</a>
+            <a href="#inicio" class="closeMenu">Início</a>
+            <a href="#produtos" class="closeMenu">Nossos produtos</a>
+            <a href="#quemsomos" class="closeMenu">Quem somos</a>
+            <a href="#loc" class="closeMenu">Localização</a>
+            <a href="#contato" class="closeMenu">Contato</a>
         </nav>
     </div>
     <!-- FIM NAVBAR MOBILE -->
@@ -90,7 +90,7 @@
 
             <!-- BOTÕES -->
             <div class="flex gap-6 items-center">
-                <button class="relative" title="Carrinho" onclick="openModalCart()">
+                <button class="relative" title="Carrinho" id="openModalCart">
                     <i class="fa fa-cart-shopping text-white" style="font-size: 24px;"></i>
                     <div class="flex justify-center items-center text-white rounded-full  absolute -right-2 -top-2 bg-yellow-color h-4 w-4"
                         id="items"></div>
@@ -102,7 +102,7 @@
                 </a>
                 <!-- FIM PC BOTAO -->
 
-                <button onclick="openMenu()" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
+                <button id="openMenu" title="Menu" class="lg:hidden"><i class="fa fa-bars text-white"
                         style="font-size: 24px;"></i></button>
             </div>
             <!-- FIM BOTÕES -->
@@ -595,7 +595,7 @@
         <div class="fixed top-0 left-0 w-full h-full z-40 bg-black/50 items-center justify-center hidden" id="modal">
             <div class="bg-white flex flex-col md:flex-row gap-3 md:gap-5 rounded-md p-5 w-[90%] max-w-screen-md">
                 <div class="md:flex-1 h-48 md:h-80 overflow-hidden rounded-md relative">
-                    <button class="absolute top-2 right-2 md:hidden" onclick="closeModal()" title="Fechar"><i
+                    <button class="absolute top-2 right-2 md:hidden" id="closeModal" title="Fechar"><i
                             class="fa fa-xmark text-white" style="font-size: 32px"></i></button>
                     <img class="w-full min-h-full" id="modal-img">
                 </div>
@@ -621,7 +621,7 @@
                             </div>
                             <button
                                 class="bg-red-color rounded-full text-white py-3 px-4 whitespace-nowrap text-sm md:text-base"
-                                onclick="addItem()" id="addToCartBtn">Adicionar
+                                id="addItem" id="addToCartBtn">Adicionar
                                 <span class="font-bold" id="modal-price">R$ 2,50</span></button>
                         </div>
                     </div>
@@ -784,7 +784,7 @@
             <!-- FIM FOOTER PC -->
 
             <!-- FOOTER MOBILE -->
-            <div class="flex md:hidden gap-10 flex-col mt-10">
+            <div class="flex md:hidden gap-10 flex-col mt-10" id="footer-mobile">
 
                 <div class="flex flex-col gap-4">
                     <div class="border rounded-xl p-5 shadow-sm">
@@ -792,7 +792,7 @@
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold">Menu</h3>
 
-                            <button onclick="openMenuAccordion()">
+                            <button id="openMenuAccordion">
                                 <i class="fa fa-plus" id="plus-menu" style="font-size: 24px;"></i>
                                 <i class="fa fa-minus hidden" id="minus-menu" style="font-size: 24px;"></i>
                             </button>
@@ -812,7 +812,7 @@
                         <div class="flex items-center justify-between">
                             <h3 class="font-bold">Contato</h3>
 
-                            <button onclick="openContactAccordion()">
+                            <button id="openContactAccordion">
                                 <i class="fa fa-plus" id="plus-contact" style="font-size: 24px;"></i>
                                 <i class="fa fa-minus hidden" id="minus-contact" style="font-size: 24px;"></i>
                             </button>
@@ -840,7 +840,7 @@
     </main>
     <!-- FIM MAIN -->
 
-    <script src="script.js"></script>
+    <script src="/dist/bundle.js"></script>
 </body>
 
 </html>

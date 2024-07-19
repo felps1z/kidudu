@@ -23,12 +23,14 @@ const alertClose = document.querySelector('#alert-close');
 const alertDescription = document.querySelector('#alert-description');
 const header = document.querySelector('header');
 
-function openMenu() {
-    DOMUtils.showElement(menuMobile);
-}
+if (menuMobile) {
+    document.querySelector('#openMenu').addEventListener('click', () => {
+        DOMUtils.showElement(menuMobile);
+    });
 
-function closeMenu() {
-    DOMUtils.hideElement(menuMobile);
+    document.querySelector('.closeMenu').addEventListener('click', () => {
+        DOMUtils.hideElement(menuMobile);
+    });
 }
 
 //Criação de um evento para sombra no header
@@ -56,26 +58,30 @@ ScrollReveal().reveal('#loc-title', {
     distance: '20%'
 });
 
-//Accordion de Menu - Mobile
-const am = document.querySelector('#accordion-menu');
-const minusMenu = document.querySelector('#minus-menu');
-const plusMenu = document.querySelector('#plus-menu');
+const footerMobile = document.querySelector('#footer-mobile');
 
-function openMenuAccordion() {
-    DOMUtils.toggleElement(am);
-    DOMUtils.toggleElement(minusMenu);
-    DOMUtils.toggleElement(plusMenu);
-}
+if (footerMobile) {
+    //Accordion de Menu - Mobile
+    const am = document.querySelector('#accordion-menu');
+    const minusMenu = document.querySelector('#minus-menu');
+    const plusMenu = document.querySelector('#plus-menu');
 
-//Accordion de Contato - Mobile
-const ac = document.querySelector('#accordion-contact');
-const minusContact = document.querySelector('#minus-contact');
-const plusContact = document.querySelector('#plus-contact');
+    document.querySelector('#openMenuAccordion').addEventListener('click', () => {
+        DOMUtils.toggleElement(am);
+        DOMUtils.toggleElement(minusMenu);
+        DOMUtils.toggleElement(plusMenu);
+    });
 
-function openContactAccordion() {
-    DOMUtils.toggleElement(ac);
-    DOMUtils.toggleElement(minusContact);
-    DOMUtils.toggleElement(plusContact);
+    //Accordion de Contato - Mobile
+    const ac = document.querySelector('#accordion-contact');
+    const minusContact = document.querySelector('#minus-contact');
+    const plusContact = document.querySelector('#plus-contact');
+
+    document.querySelector('#openContactAccordion').addEventListener('click', () => {
+        DOMUtils.toggleElement(ac);
+        DOMUtils.toggleElement(minusContact);
+        DOMUtils.toggleElement(plusContact);
+    });
 }
 
 // HORA DE FUNCIONAMENTO
@@ -224,16 +230,12 @@ products.forEach(product => {
         // Fechar o modal se clicar fora dele
         modal.addEventListener('click', (event) => {
             if (event.target === modal) {
-                closeModal();
+                quantity = 1;
+                updateQuantity();
+                updatePrice();
+                DOMUtils.hideElement(modal);
             }
         });
-
-        function closeModal() {
-            quantity = 1;
-            updateQuantity();
-            updatePrice();
-            DOMUtils.hideElement(modal);
-        }
     });
 });
 
@@ -273,6 +275,12 @@ function capturaEventos() {
         if (localStorage.getItem('complemento')) {
             document.querySelector('#complemento').value = localStorage.getItem('complemento');
         }
+
+        // FECHAR MODAL CART
+        document.querySelector('#closeModalCart').addEventListener('click', () => {
+            DOMUtils.hideElement(modalCart);
+        });
+
         nomeBairro = '';
 
         form1.addEventListener('submit', e => {
@@ -541,8 +549,8 @@ function showAlert(msg, description, sucess) {
     });
 }
 
-//Função que é ativada ao clicar no carrinho
-function openModalCart() {
+// ABRIR MODAL CART
+document.querySelector('#openModalCart').addEventListener('click', () => {
     if (cart.length <= 0) {
         showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio', sucess = false);
         return;
@@ -550,17 +558,12 @@ function openModalCart() {
 
     DOMUtils.showElement(modalCart);
     carregaPagina('modal-cart-1.html');
-}
+});
 
-//Fechar
-function closeModalCart() {
-    DOMUtils.hideElement(modalCart);
-}
-
-//Fechar ao clicar fora dele
+//Fechar ao clicar fora do modal cart
 modalCart.addEventListener('click', (event) => {
     if (event.target === modalCart) {
-        closeModalCart();
+        DOMUtils.hideElement(modalCart);
     }
 });
 
@@ -578,55 +581,66 @@ showCountItems();
 
 // MODAL - Adicionando itens ao carrinho (Ao clicar no botão de adicionar)
 
+const modal = document.querySelector('#modal');
+
 function closeModal() {
     DOMUtils.hideElement(modal);
 }
 
-// Função de adicionar item ao carrinho
-function addItem() {
-    let modalQuantity = parseInt(document.querySelector('#modal-quantity').textContent);
-
-    items += modalQuantity;
-    showCountItems(); // atualizar contador
-
-    const name = document.querySelector('#modal-title').textContent;
-
-    showAlert('Produto adicionado', 'Finalize no carrinho', sucess = true);
-
-    // Preço modificado
-    let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
-
-    // Preço original (sem modificação) pegado do atributo data-original-price do elemento #modal-price
-    let originalPrice = parseFloat(document.querySelector('#modal-price').getAttribute('data-original-price').replace('R$ ', '').replace(',', '.'));
-
-    // Se o produto já existir, 'existingItems' recebe true
-    const existingItems = cart.find(product => product.name === name);
-
-    // Se existir, incrementa a quantidade e o preço
-    if (existingItems) {
-        existingItems.quantity += modalQuantity;
-        existingItems.price += price;
-
-        closeModal();
-
-        updateCartModal();
-        eventRemoveCartItem();
-    } else {
-        //Senão, cria um novo produto
-        const product = {
-            name: name,
-            price: price,
-            originalPrice: originalPrice,
-            quantity: modalQuantity
-        };
-
-        cart.push(product);
-
-        closeModal();
-
-        updateCartModal();
-        eventRemoveCartItem();
+// Se o modal existe
+if (modal) {
+    // Fechar modal se o botão do modal existir
+    const closeModalBtn = document.querySelector('#closeModal');
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => closeModal());
     }
+
+    // Adicionar item ao carrinho
+    document.querySelector('#addItem').addEventListener('click', () => {
+        let modalQuantity = parseInt(document.querySelector('#modal-quantity').textContent);
+
+        items += modalQuantity;
+        showCountItems(); // atualizar contador
+
+        const name = document.querySelector('#modal-title').textContent;
+
+        showAlert('Produto adicionado', 'Finalize no carrinho', sucess = true);
+
+        // Preço modificado
+        let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
+
+        // Preço original (sem modificação) pegado do atributo data-original-price do elemento #modal-price
+        let originalPrice = parseFloat(document.querySelector('#modal-price').getAttribute('data-original-price').replace('R$ ', '').replace(',', '.'));
+
+        // Se o produto já existir, 'existingItems' recebe true
+        const existingItems = cart.find(product => product.name === name);
+
+        // Se existir, incrementa a quantidade e o preço
+        if (existingItems) {
+            existingItems.quantity += modalQuantity;
+            existingItems.price += price;
+
+            closeModal();
+
+            updateCartModal();
+            eventRemoveCartItem();
+        } else {
+            //Senão, cria um novo produto
+            const product = {
+                name: name,
+                price: price,
+                originalPrice: originalPrice,
+                quantity: modalQuantity
+            };
+
+            cart.push(product);
+
+            closeModal();
+
+            updateCartModal();
+            eventRemoveCartItem();
+        }
+    });
 }
 
 let subtotalPrice;
