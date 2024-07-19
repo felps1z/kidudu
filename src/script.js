@@ -436,7 +436,7 @@ function capturaEventos() {
         finalizarPedido.addEventListener('click', e => {
             const cartItems = cart.map(item => `
 • *Produto 1:* ${item.name} (Quantidade: ${item.quantity})
-Preço: ${item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`).join('');
+Preço: ${item.originalPrice.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}`).join('');
 
             //Pegando data e hora e jogando no formato do WhatsApp
             const date = new Date();
@@ -445,7 +445,7 @@ Preço: ${item.price.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL
 
             const message = encodeURIComponent(`👋 Olá! Estou enviando um pedido pelo site www.kidudu.com.
 
-🗓 Data: ${data} ⏰ Horário: ${hora}
+🗓 ${data} ⏰ ${hora}
 
 _Tipo de serviço: Delivery_
             
