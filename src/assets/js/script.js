@@ -1,49 +1,34 @@
-const DOMUtils = {
-    showElement: (element) => {
-        element.classList.remove('hidden');
-        element.classList.add('flex');
-    },
-    hideElement: (element) => {
-        element.classList.remove('flex');
-        element.classList.add('hidden');
-    },
-    toggleElement: (element) => {
-        element.classList.toggle('hidden');
-    }
-};
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+import domUtils from './utils/domUtils';
 
 //Menu Navbar - Mobile
 const menuMobile = document.querySelector('#menu-mobile');
 let cart = [];
+
+const header = document.querySelector('header');
+window.addEventListener('scroll', function () {
+    const scrollPosition = window.scrollY - header.offsetHeight;
+    header.style.boxShadow = scrollPosition <= 0 ? 'none' : '5px 1px 5px rgba(0, 0, 0, 0.1)';  
+});
 
 //Variáveis do alerta
 const alert = document.querySelector('#alert');
 const alertMessage = document.querySelector('#alert-message');
 const alertClose = document.querySelector('#alert-close');
 const alertDescription = document.querySelector('#alert-description');
-const header = document.querySelector('header');
 
 if (menuMobile) {
     document.querySelector('#openMenu').addEventListener('click', () => {
-        DOMUtils.showElement(menuMobile);
+        domUtils.showElement(menuMobile);
     });
 
     document.querySelector('.closeMenu').addEventListener('click', () => {
-        DOMUtils.hideElement(menuMobile);
+        domUtils.hideElement(menuMobile);
     });
 }
 
-//Criação de um evento para sombra no header
-window.addEventListener('scroll', function () {
-    const header = document.querySelector('header');
-    const scrollPosition = window.scrollY - header.offsetHeight;
-
-    if (scrollPosition <= 0) {
-        header.style.boxShadow = 'none';
-    } else {
-        header.style.boxShadow = '5px 1px 5px rgba(0, 0, 0, 0.1)';
-    }
-});
 
 //ScrollReveal
 ScrollReveal().reveal('#quemsomos', {
@@ -67,9 +52,9 @@ if (footerMobile) {
     const plusMenu = document.querySelector('#plus-menu');
 
     document.querySelector('#openMenuAccordion').addEventListener('click', () => {
-        DOMUtils.toggleElement(am);
-        DOMUtils.toggleElement(minusMenu);
-        DOMUtils.toggleElement(plusMenu);
+        domUtils.toggleElement(am);
+        domUtils.toggleElement(minusMenu);
+        domUtils.toggleElement(plusMenu);
     });
 
     //Accordion de Contato - Mobile
@@ -78,9 +63,9 @@ if (footerMobile) {
     const plusContact = document.querySelector('#plus-contact');
 
     document.querySelector('#openContactAccordion').addEventListener('click', () => {
-        DOMUtils.toggleElement(ac);
-        DOMUtils.toggleElement(minusContact);
-        DOMUtils.toggleElement(plusContact);
+        domUtils.toggleElement(ac);
+        domUtils.toggleElement(minusContact);
+        domUtils.toggleElement(plusContact);
     });
 }
 
@@ -119,6 +104,26 @@ setInterval(() => {
 const btn2 = document.querySelector('#btn2');
 const btn1 = document.querySelector('#btn1');
 
+// DIV PAI DOS BOTOES DE CONTROLAR O CARROSSEL
+const carouselControl = document.querySelector('#carousel-control');
+carouselControl.addEventListener('click', (event) => {
+    const target = event.target;
+
+    if (target.matches('#btn1')) {
+        // SE O CLIQUE FOR NO BOTAO 1
+        slides.style.transition = 'transform 1s ease-in-out';
+        slides.style.transform = 'translateX(0)';
+        btn1.style.backgroundColor = '#000';
+        btn2.style.backgroundColor = '#A5A5A5';
+    } else if (target.matches('#btn2')) {
+        // SE O CLIQUE FOR NO BOTAO 2 
+        slides.style.transition = 'transform 1s ease-in-out';
+        slides.style.transform = 'translateX(-100%)';
+        btn2.style.backgroundColor = '#000';
+        btn1.style.backgroundColor = '#A5A5A5';
+    }
+});
+
 //Mudando a cor dos botões de acordo com o slide
 setInterval(() => {
     btn2.style.backgroundColor = '#000';
@@ -128,22 +133,6 @@ setInterval(() => {
     btn1.style.backgroundColor = '#000';
     btn2.style.backgroundColor = '#A5A5A5';
 }, 20000);
-
-//Se o usuário clicar no botão 1, o slide vai para o primeiro
-btn1.addEventListener('click', () => {
-    slides.style.transition = 'transform 1s ease-in-out';
-    slides.style.transform = 'translateX(0)';
-    btn1.style.backgroundColor = '#000';
-    btn2.style.backgroundColor = '#A5A5A5';
-});
-
-//Se o usuário clicar no botão 2, o slide vai para o segundo
-btn2.addEventListener('click', () => {
-    slides.style.transition = 'transform 1s ease-in-out';
-    slides.style.transform = 'translateX(-100%)';
-    btn2.style.backgroundColor = '#000';
-    btn1.style.backgroundColor = '#A5A5A5';
-});
 
 // PRODUTOS E MODAL
 
@@ -156,7 +145,7 @@ products.forEach(product => {
 
         //Abrindo modal ao clicar no produto
         const modal = document.querySelector('#modal');
-        DOMUtils.showElement(modal);
+        domUtils.showElement(modal);
 
         // Pegando os dados do produto clicado
         const img = product.querySelector('img').src;
@@ -190,7 +179,6 @@ products.forEach(product => {
         document.querySelector('#modal-price').innerHTML = price;
         document.querySelector('#modal-price').setAttribute('data-original-price', price);
         document.querySelector('#modal-quantity').innerHTML = quantity;
-
 
         //Funcionalidades do modal
 
@@ -233,7 +221,7 @@ products.forEach(product => {
                 quantity = 1;
                 updateQuantity();
                 updatePrice();
-                DOMUtils.hideElement(modal);
+                domUtils.hideElement(modal);
             }
         });
     });
@@ -278,7 +266,7 @@ function capturaEventos() {
 
         // FECHAR MODAL CART
         document.querySelector('#closeModalCart').addEventListener('click', () => {
-            DOMUtils.hideElement(modalCart);
+            domUtils.hideElement(modalCart);
         });
 
         nomeBairro = '';
@@ -412,9 +400,9 @@ function capturaEventos() {
             const troco = document.querySelector('#troco-container');
 
             if (selected === 'dinheiro') {
-                DOMUtils.showElement(troco);
+                domUtils.showElement(troco);
             } else {
-                DOMUtils.hideElement(troco);
+                domUtils.hideElement(troco);
             }
         });
     }
@@ -503,6 +491,7 @@ function carregaResultado(response) {
 }
 
 function showAlert(msg, description, sucess) {
+    console.log('chegou no showAlert')
     if (sucess) {
         alertIcon.innerHTML = '<div class="w-6 h-6 flex justify-center items-center"><i class="fa-solid fa-bag-shopping text-green-400" style="font-size: 16px"></i></div>';
     } else {
@@ -510,7 +499,7 @@ function showAlert(msg, description, sucess) {
     }
 
     //Mostrando o alerta
-    DOMUtils.showElement(alert);
+    domUtils.showElement(alert);
 
     //Posicionando o alerta
     alert.style.top = `${header.offsetHeight}px`;
@@ -528,7 +517,7 @@ function showAlert(msg, description, sucess) {
     //Fechar alerta automaticamente após 5 segundos
     const tempo = setTimeout(() => {
         //Escondendo o alerta
-        DOMUtils.hideElement(alert);
+        domUtils.hideElement(alert);
 
         alert.classList.remove('opacity-100');
         alert.style.transform = 'translateY(-30px)';
@@ -538,7 +527,7 @@ function showAlert(msg, description, sucess) {
     //Fechar alerta ao clicar no botão de fechar
     alertClose.addEventListener('click', () => {
         //Escondendo o alerta
-        DOMUtils.hideElement(alert);
+        domUtils.hideElement(alert);
 
         alert.classList.remove('opacity-100');
         alert.style.transform = 'translateY(-30px)';
@@ -550,20 +539,24 @@ function showAlert(msg, description, sucess) {
 }
 
 // ABRIR MODAL CART
-document.querySelector('#openModalCart').addEventListener('click', () => {
+const openModalCart = document.querySelector('#openModalCart');
+
+openModalCart.addEventListener('click', () => {
+    
     if (cart.length <= 0) {
-        showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio', sucess = false);
+        console.log('clicou');
+        showAlert('Adicione itens ao carrinho', 'Seu carrinho está vazio', false);
         return;
     };
 
-    DOMUtils.showElement(modalCart);
+    domUtils.showElement(modalCart);
     carregaPagina('modal-cart-1.html');
 });
 
 //Fechar ao clicar fora do modal cart
 modalCart.addEventListener('click', (event) => {
     if (event.target === modalCart) {
-        DOMUtils.hideElement(modalCart);
+        domUtils.hideElement(modalCart);
     }
 });
 
@@ -584,7 +577,7 @@ showCountItems();
 const modal = document.querySelector('#modal');
 
 function closeModal() {
-    DOMUtils.hideElement(modal);
+    domUtils.hideElement(modal);
 }
 
 // Se o modal existe
@@ -604,7 +597,7 @@ if (modal) {
 
         const name = document.querySelector('#modal-title').textContent;
 
-        showAlert('Produto adicionado', 'Finalize no carrinho', sucess = true);
+        showAlert('Produto adicionado', 'Finalize no carrinho', true);
 
         // Preço modificado
         let price = parseFloat(document.querySelector('#modal-price').textContent.replace('R$ ', '').replace(',', '.'));
