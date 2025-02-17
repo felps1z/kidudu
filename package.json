@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npx tailwindcss -i src/assets/styles/input.css -o dist/output.css",
-    "build": "webpack"
+    "build": "webpack && npx tailwindcss -i ./src/assets/styles/input.css -o ./dist/output.css --minify"
   },
   "keywords": [],
   "author": "Felipe dos Santos",
