@@ -1,8 +1,7 @@
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    mode: 'production',
+    mode: 'development',
     entry: './src/assets/js/script.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -20,11 +19,5 @@ module.exports = {
             }
         }]
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-          template: './src/index.html',
-          filename: 'index.html' // O Webpack criará o index.html dentro de dist/
-        })
-    ],
     devtool: 'source-map'
 }
