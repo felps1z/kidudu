@@ -89,6 +89,6 @@ src/
 
 ## 👨‍💻 Desenvolvedores
 
-Desenvolvido por **Felipe dos Santos e Lethicia**.
+Desenvolvido por **Felipe dos Santos e Lethicia Almeida**.
 
 Projeto freelance criado para divulgação e vendas da loja KiDudu em Belo Jardim - PE.
