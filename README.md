@@ -87,4 +87,7 @@ src/
 
 ---
 
+## 🧑🏻‍💻 Desenvolvedor
+Felipe dos Santos Silva
+
 Projeto freelance criado para divulgação e vendas da loja KiDudu em Belo Jardim - PE.
